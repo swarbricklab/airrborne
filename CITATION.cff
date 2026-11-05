@@ -1,10 +1,11 @@
 # Citation metadata in Citation File Format 1.2.0.
-# Add the version, release date and DOI when the source release is published.
+# Add the release date and DOI when the source release is published.
 cff-version: 1.2.0
 message: >-
   Cite this software with the pipeline commit recorded in each release's
   provenance.json, and cite the tools listed in the README.
 title: airrborne
+version: 1.0.0
 type: software
 authors:
   - given-names: James

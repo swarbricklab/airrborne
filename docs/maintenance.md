@@ -296,6 +296,10 @@ conda install -n snakemake_9.27.1 -c conda-forge graphviz
 
 ## Prepare a source release
 
+Source releases use [semantic versioning](https://semver.org/) from `v1.0.0`. The public interface comprises the launch commands, configuration schema and released output contracts. Increase the major version for incompatible changes to that interface, the minor version for compatible additions and the patch version for compatible fixes. The source version is independent of `OUTPUT_SCHEMA_VERSION`; source `v1.0.0` uses output schema `2.0.0`.
+
+Published releases are immutable. Prepare release notes and assets in a draft, complete acceptance for the final source commit, then publish. Correct a published release with a new version rather than moving its tag or replacing its assets. Existing cohort provenance continues to identify the source commit that produced those files; a metadata-only source release does not rewrite a validated cohort snapshot.
+
 Run the [release acceptance checks](../test/README.md#check-a-complete-change) for the intended source revision, including the manual CI run. Check the author order and identifiers in `CITATION.cff`. Add the chosen source version, release date and assigned DOI when available; keep these consistent with the tag and deposition metadata.
 
 Test setup from a fresh recursive clone of the intended release tag. Build the deposited archive from tracked source and inspect its contents. Git source archives omit Git metadata and submodule contents, so [execution requires a clone](running.md#prepare-the-environment).
