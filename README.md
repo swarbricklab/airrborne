@@ -1,6 +1,6 @@
 # airrborne
 
-[![public tests](https://github.com/swarbricklab/airrborne/actions/workflows/unit-tests.yaml/badge.svg)](https://github.com/swarbricklab/airrborne/actions/workflows/unit-tests.yaml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Snakemake: 9](https://img.shields.io/badge/Snakemake-9-green.svg)](envs/snakemake_9.27.1.yaml)
+[![public tests](https://github.com/swarbricklab/airrborne/actions/workflows/unit-tests.yaml/badge.svg)](https://github.com/swarbricklab/airrborne/actions/workflows/unit-tests.yaml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Snakemake: 9](https://img.shields.io/badge/Snakemake-9-green.svg)](envs/snakemake_9.27.1.yaml) [![WorkflowHub](https://img.shields.io/badge/WorkflowHub-2373-2d4a9a)](https://workflowhub.eu/workflows/2373) [![DOI](https://zenodo.org/badge/1446443488.svg)](https://doi.org/10.5281/zenodo.23976782)
 
 airrborne recovers human B-cell and T-cell receptor sequences from paired-end bulk RNA-seq. It produces tables, files in the Adaptive Immune Receptor Repertoire (AIRR) format and an interactive report that opens in a web browser. The report covers receptor recovery, diversity, antibody isotypes, mutation and receptor sharing between libraries from the same donor.
 
