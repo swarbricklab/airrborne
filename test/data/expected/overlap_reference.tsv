@@ -1,0 +1,37 @@
+# immunarch::repOverlap() values for five toy repertoire pairs, measured once and
+# committed, because immunarch lives only in the image recorded below, which the
+# pipeline does not run, and the unit suite runs in a plain R with no container.
+# This is what discharges the claim in
+# workflow/lib/overlap_metrics.R that jaccard_index() and morisita_horn_index()
+# are the same quantities as repOverlap(.method = "jaccard") and
+# repOverlap(.method = "morisita"); test/components/overlap/unit/test-sharing.R asserts
+# against these numbers.
+#
+#   measured   2026-08-02
+#   image      /g/data/a56/software/singularity/images/c2ea012766ec50477a5e2df0738081db.simg
+#   container  docker://ghcr.io/swarbricklab/immunarch@sha256:866d9a84b4d78725ff6ed61cf6e4ed4d556dd1cc6396ff4fdd99b9592eed5229
+#              (the .simg name is the md5 of that URL, which is how Snakemake
+#              names its image cache. The pipeline does not run this image;
+#              the digest is recorded so these frozen values stay traceable.)
+#   immunarch  0.10.3.9002
+#
+# Regenerate with, from the module root:
+#   singularity exec --cleanenv --bind /g/data/a56,/scratch/a56 <image> Rscript -e '
+#     library(immunarch)
+#     rep <- function(k, n) data.frame(CDR3.nt = k, CDR3.aa = k, Clones = n,
+#       Proportion = n / sum(n), V.name = "V1", J.name = "J1", D.name = "D1")
+#     d <- list(a = rep(c("K1","K2","K3"), c(10,5,1)), b = rep(c("K2","K3","K4"), c(20,4,6)))
+#     repOverlap(d, .method = "jaccard", .col = "nt", .verbose = FALSE)
+#     repOverlap(d, .method = "morisita", .col = "nt", .verbose = FALSE)'
+#
+# Each row is one unordered pair. keys_* and counts_* are comma-separated and
+# aligned; jaccard and morisita are repOverlap's answers, written with %.17g so
+# they read back bit-for-bit. The pairs cover a partial overlap, disjoint
+# repertoires, the same key set at different abundances, and a single-clone
+# repertoire.
+pair	keys_first	counts_first	keys_second	counts_second	jaccard	morisita
+A-B	K1,K2,K3	10,5,1	K2,K3,K4	20,4,6	0.5	0.4357694053563323
+A-C	K1,K2,K3	10,5,1	K5,K6	1,1	0	0
+A-D	K1,K2,K3	10,5,1	K1,K2,K3	1,1,1	1	0.80757097791798105
+A-E	K1,K2,K3	10,5,1	K1	7	0.33333333333333331	0.83769633507853403
+B-D	K2,K3,K4	20,4,6	K1,K2,K3	1,1,1	0.5	0.63829787234042534

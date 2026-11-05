@@ -1,0 +1,2 @@
+# Show the minified third-party plotly.js bundle as binary in diffs.
+workflow/report/assets/plotly.min.js -diff linguist-vendored

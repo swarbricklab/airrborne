@@ -1,0 +1,68 @@
+{
+   "inputs" : {
+      "read_pairs" : [
+         {
+            "r1" : "test/synthetic/reads/SYN_D2_T2/SYN_D2_T2_L001_R1_001.fastq.gz",
+            "r2" : "test/synthetic/reads/SYN_D2_T2/SYN_D2_T2_L001_R2_001.fastq.gz"
+         },
+         {
+            "r1" : "test/synthetic/reads/SYN_D2_T2/SYN_D2_T2_L002_R1_001.fastq.gz",
+            "r2" : "test/synthetic/reads/SYN_D2_T2/SYN_D2_T2_L002_R2_001.fastq.gz"
+         }
+      ],
+      "reference" : {
+         "name" : "human_IMGT+C.fa",
+         "sha256" : "085536aa1a10e8492de129f3420f36713d71992b3e48d426e82fa166fd8ea50e",
+         "size_bytes" : 522067
+      }
+   },
+   "library_id" : "SYN_D2_T2",
+   "outputs" : {
+      "airr" : {
+         "name" : "SYN_D2_T2_airr.tsv",
+         "sha256" : "f8ebee2168a6058970ee30efada29262605bf9d3284e72379a81e78811fa20e7",
+         "size_bytes" : 8156
+      },
+      "cdr3" : {
+         "name" : "SYN_D2_T2_cdr3.out",
+         "sha256" : "8a67ee26f2f1e3eadb591e4451cc31819eb12b67af46c4b5ef34cf8e4c29078e",
+         "size_bytes" : 858
+      },
+      "final_out" : {
+         "name" : "SYN_D2_T2_final.out",
+         "sha256" : "3af86b6763b748d74a8107938466526de60d79535faafbbc1d3544171d46d11e",
+         "size_bytes" : 33710
+      }
+   },
+   "producer" : {
+      "image" : {
+         "configured_reference" : "ghcr.io/swarbricklab/trust4@sha256:100b5553815b377837e2864e20ef8b15cc7a84544bc2a5b805fe5c64c277c09f",
+         "digest" : "sha256:100b5553815b377837e2864e20ef8b15cc7a84544bc2a5b805fe5c64c277c09f",
+         "format" : "oci"
+      },
+      "settings" : {
+         "clean" : 0,
+         "contig_min_cov" : 0,
+         "k_mer_size" : 9
+      },
+      "software" : [
+         {
+            "method" : "installed run-trust4 version declaration",
+            "name" : "TRUST4",
+            "status" : "measured",
+            "version" : "v1.1.9-r619"
+         }
+      ],
+      "source" : {
+         "dirty" : false,
+         "index_diff_sha256" : "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+         "relevant_changes" : [],
+         "revision" : "67b60b14b1a29afd92a90eb1e729a3b66df20c5f",
+         "state_sha256" : "286960601ea4942d79bf0712ffd5ad399d9f4a7c25f710ca44fe056f21a90234",
+         "tracked_dirty" : false,
+         "working_diff_sha256" : "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+   },
+   "schema_version" : "2.0",
+   "stage" : "assembly"
+}

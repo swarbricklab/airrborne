@@ -1,0 +1,201 @@
+# Request scheduler resources for the rules in Snakefile and workflow/rules/.
+# run_module.sh combines this workflow profile with a site profile for submission.
+# Local execution uses profiles/local instead; analysis settings are in config/.
+__use_yte__: true
+
+__definitions__:
+  - import os
+
+# Snakemake options; command-line values take precedence.
+restart-times: 2
+rerun-incomplete: false
+keep-going: true
+# Limit concurrent jobs to leave queue capacity for other project work.
+# Command-line values can override this limit for a monitored run.
+jobs: 250
+# Analysis rules run their images through workflow/scripts/container_exec.sh.
+# The AIRR export, release and report rules use envs/release.yaml. The site
+# profile names the conda prefix for that environment; the bundled NCI profile
+# uses the lab's shared cache. Uncomment the line below to keep it in the
+# launch directory instead, which needs no shared write access and lets PBS
+# submission and local execution share one environment.
+software-deployment-method: [conda]
+# conda-prefix: .snakemake/conda
+# Keep native threads and PBS allocation equal for each multithreaded rule.
+# set-threads controls the {threads} passed to TRUST4 and IgBLAST commands.
+# The shared adapter reads resources.threads for PBS ncpus instead, through
+# profiles/global/nci/key_mapping.yaml. Each entry here therefore needs the
+# same threads value under set-resources. Other rules use one native thread
+# and the shared profile's default resources.threads of 1.
+set-threads:
+    run_trust4: 8
+    reannotate_igblast: 8
+
+# PBS mem_mb and disk_mb use megabytes; runtime uses minutes. The shared
+# key_mapping.yaml maps memory, disk and threads to qsub options. Its special
+# runtime entry lets pbs_submit.py convert minutes to walltime seconds.
+# Use integer mem_mb and disk_mb requests to match the adapter mapping and
+# the units in profiles/local/config.yaml.
+#
+# Every value below is a provisional production request. The synthetic Gadi
+# checks in docs/maintenance.md confirm PBS mappings and small-fixture usage;
+# they do not size real libraries. Revise requests from production benchmarks.
+#
+# Six rules deliberately have no entry. `all` and `post_trust4_all` only
+# collect targets, and `build_scope_manifest`, `build_scope_assignment`,
+# `obtain_analysis_image` and `obtain_assembly_image` are declared localrules,
+# so all six run in the submitting Snakemake process and are never handed to
+# PBS.
+set-resources:
+    prepare_igh_grouping:
+        mem_mb: 4000
+        runtime: 30
+    export_library_airr:
+        mem_mb: 2000
+        runtime: 30
+    annotate_scope_airr:
+        mem_mb: 2000
+        runtime: 15
+    build_scope_headline:
+        mem_mb: 2000
+        runtime: 30
+    build_scope_repertoires:
+        mem_mb: 2000
+        runtime: 30
+    capture_tool_versions:
+        mem_mb: 2000
+        runtime: 15
+    build_scope_provenance:
+        mem_mb: 2000
+        runtime: 15
+    collect_scope_rarefaction_curves:
+        mem_mb: 1000
+        runtime: 30
+    collect_scope_vj_pair_usage:
+        mem_mb: 1000
+        runtime: 30
+    prepare_scope_report:
+        # report_data.read_table() holds each metric table in memory as one dict
+        # per row, so memory grows with the number of rows in the scope's tables.
+        # 32000 MB matches the allocation for reannotate_igblast.
+        mem_mb: 32000
+        # Headroom rather than a measurement. PBS charges walltime used, not
+        # requested.
+        runtime: 120
+    render_scope_report:
+        mem_mb: 4000
+        runtime: 30
+    normalise_input_depth:
+        mem_mb: 500 # One retained depth row.
+        runtime: 10
+    qualify_isotype_calls:
+        mem_mb: 4000 # One library's IGH calls.
+        runtime: 30
+    collect_scope_library_metric:
+        mem_mb: 1000 # Streams library rows.
+        runtime: 30
+    collect_scope_qc_audit:
+        mem_mb: 1000 # Collects library and donor population counts.
+        runtime: 30
+    # Reference preparation, assembly and library analyses.
+    audit_imgt_reference:
+        mem_mb: 2000
+        runtime: 15
+    obtain_imgt_reference:
+        mem_mb: 4000
+        runtime: 60
+        disk_mb: 500
+    run_trust4:
+        threads: 8 # PBS ncpus; match set-threads: run_trust4
+        mem_mb: 96000 # Headroom for the deepest samples.
+        runtime: 960 # Headroom for the deepest samples.
+        disk_mb: 1000
+    count_sequencing_depth:
+        mem_mb: 2000 # Host zcat piped into awk, so it streams.
+        runtime: 240 # Single-threaded gzip decompression of the deepest samples.
+        disk_mb: 1000
+    filter_airr:
+        mem_mb: 8000
+        runtime: 60
+    calculate_igh_features:
+        mem_mb: 8000
+        runtime: 120
+    build_igh_consensus_votes:
+        mem_mb: 8000
+        runtime: 120
+    build_clonotypes:
+        mem_mb: 8000 # Reads one common all-locus AIRR table and groups six non-IGH loci.
+        runtime: 60
+    calculate_library_clonotype_diversity:
+        mem_mb: 8000
+        runtime: 60
+    # reannotate_igblast aligns both IG and TR assemblies, then runs MakeDb and
+    # IG germline reconstruction. Validate the allocation against PBS accounting
+    # and the deployment's queue limits.
+    reannotate_igblast:
+        threads: 8 # PBS ncpus; match set-threads: reannotate_igblast
+        mem_mb: 32000 # Headroom for the deepest samples.
+        runtime: 720 # Both receptor families, with headroom for the deepest samples.
+        disk_mb: 8000 # Per-sample IG and TR FASTA, fmt7, db-pass and germline scratch.
+    calculate_isotype:
+        mem_mb: 4000
+        runtime: 30
+    summarise_library_yield:
+        mem_mb: 8000 # Reads one raw AIRR table and aggregates read support.
+        runtime: 60
+    # Donor analyses within scopes and scope-wide collection.
+    pool_scope_donor_igh:
+        mem_mb: 8000
+        runtime: 60
+    # The assignment script runs SCOPer hierarchicalClones with nproc = 1 on
+    # eligible IGH representatives within each donor and scope.
+    assign_scope_donor_clones:
+        mem_mb: 16000
+        runtime: 360
+    # One donor feature join writes five retained summary shards and the SHM
+    # population audit.
+    calculate_donor_igh_summaries:
+        mem_mb: 16000
+        runtime: 120
+    # This also binds every membership table for a scope before calculating
+    # per-library lineage summaries, so memory grows with scope membership.
+    calculate_scope_clone_diversity:
+        mem_mb: 16000
+        runtime: 120
+    fit_donor_threshold:
+        mem_mb: 8000
+        runtime: 120
+    resolve_scope_clone_threshold:
+        mem_mb: 4000
+        runtime: 30
+    # BASELINe estimates are computed separately for each library and isotype
+    # stratum. Each job reads one donor's IGH records and clone membership.
+    calculate_donor_selection:
+        mem_mb: 16000
+        runtime: 240
+    # Reads donor lineage records to describe shared IGH clones alongside the
+    # membership table used for support.
+    calculate_donor_overlap:
+        mem_mb: 16000
+        runtime: 60
+    collect_scope_overlap:
+        mem_mb: 16000
+        runtime: 60
+    collect_scope_selection:
+        mem_mb: 16000
+        runtime: 60
+    # Merge sorted donor shards with one buffered row per input, so memory stays
+    # bounded as donors are added.
+    collect_scope_donor_metric:
+        mem_mb: 1000
+        runtime: 30
+    # Binds every library's clone-size vector for a scope, without the contigs.
+    collect_scope_group_abundance:
+        mem_mb: 16000
+        runtime: 60
+    # assemble_scope_release stages tables and assets, validates AIRR links,
+    # replaces the released folder and writes its receipt.
+    assemble_scope_release:
+        mem_mb: 4000
+        runtime: 60
+        disk_mb: 4000

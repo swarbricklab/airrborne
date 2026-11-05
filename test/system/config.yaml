@@ -1,0 +1,84 @@
+# Pipeline dependencies (inputs)
+deps:
+  samplesheet: test/data/samplesheet.csv
+  data: test/data/reads/
+  resources: test/resources/trust4/ # Directory to save TRUST4 resources/references
+  immcantation_docker: immcantation/suite@sha256:44e228a45b047bdb352363ab20a670336b003e98f3d1bac505f78af41a91ab67 # Immcantation Suite 4.8.0, pinned by OCI digest
+  # BioContainers supplies the public TRUST4 image without registry credentials.
+  trust4_container: docker://quay.io/biocontainers/trust4@sha256:96509a456e709be36359d0d2734368c23b9c6560100dad89377d34030ef130c9
+
+# Project scopes: one long CSV (columns project, library_id, usage) naming which
+# libraries belong to which project. Each project becomes a scope beside the
+# reserved `cohort` scope, which holds every library. Each scope has its own
+# donor-pooled IGH clones, within-scope overlap and report. The two fixture
+# projects share donors with different library subsets, which exercises scope
+# isolation, and one usage: fail_qc row must be left out.
+membership_csv: test/data/membership.csv
+
+# Pipeline references (shared references for use in pipeline)
+refs:
+  imgt_reference_name: human_IMGT+C.fa # Name to use for the IMGT reference file
+
+# Output directories. test/system/run.sh replaces both with paths inside the run's
+# fresh work directory.
+outs:
+  results_dir: test/results/airrborne/ # Directory to store TRUST4 results
+  log_dir: test/logs/airrborne/ # Directory to store log files
+
+# Constructed report annotations exercise scope isolation. The cohort scope has
+# none.
+scope_metadata:
+  project_a:
+    tissue:
+      file: test/data/tissue_metadata.csv
+      columns: [timepoint, timepoint_order, group, score]
+  project_b:
+    tissue:
+      file: test/data/tissue_metadata.csv
+      columns: [timepoint]
+    library:
+      file: test/data/samplesheet.csv
+      columns: [wts_prj]
+
+# Analysis settings
+params:
+  rarefaction:
+    # Positive support depth for interpolation without replacement. Omit a locus
+    # to disable its target and curve. These are support units, not cells.
+    # The TRB target of 100 exercises available values; its production default is 400.
+    targets: {IGH: 1000, TRB: 100}
+  diversity:
+    # Minimum support for Shannon entropy, Hill q = 1 and q = 2, dominance and
+    # target-depth values. Richness, support and curves remain available.
+    # Omitted loci use zero.
+    min_consensus_count: {IGH: 0, IGK: 0, IGL: 0, TRA: 0, TRB: 0, TRD: 0, TRG: 0}
+  # The fixture uses the scientific defaults documented in config/airrborne/config.yaml.
+  trust4:
+    k_mer_size: 9
+    contig_min_cov: 0
+  lineage:
+    clonal_threshold: auto
+    min_fit_distances: 500
+    fit_edge: 0.9
+    fit_specificity: 0.995
+    fit_subsample: 10000
+    max_n: 0
+  igblast:
+    igblast_db: /usr/local/share/igblast
+    germline_dir: /usr/local/share/germlines/imgt/human/vdj
+    num_alignments_v: 50
+    num_alignments_j: 20
+    num_alignments_d: 3
+    num_alignments_c: 125
+  airr_qc:
+    max_alignment_n_fraction: 0.1
+    min_informative_c_alignment_positions: 40
+  shm:
+    min_position_votes: 2
+    min_supported_subregion_fraction: 1.0
+    min_germline_occupied_v_positions: 270
+  selection:
+    collapse_min_freq: 0.6
+  overlap:
+    loci: [IGH, TRB]
+    min_consensus_count: {IGH: 0, TRA: 0, TRB: 0, TRD: 0, TRG: 0}

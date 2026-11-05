@@ -1,0 +1,53 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+description: >-
+  The Snakefile validates each sequencing-library row against this local schema.
+  One row represents one library from one tissue and donor. Bulk RNA-seq does
+  not identify individual cells.
+
+  The Snakefile reads columns with dtype="string" and keep_default_na=False,
+  preserving leading zeroes and literal NA identifiers. It strips surrounding
+  whitespace from the four required columns before validation. Their patterns
+  reject blank values and path separators in identifiers. Library and donor IDs
+  also name output-path components.
+
+  The Snakefile separately rejects an empty sheet, names missing columns,
+  rejects repeated library_id values and requires one donor_id per tissue_id.
+type: object
+properties:
+  library_id:
+    type: string
+    # Local naming schemes may use letters, digits, dots, underscores and
+    # hyphens. The leading alphanumeric keeps the ID safe as a path component.
+    pattern: "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    description: >-
+      Unique library identifier and the path component naming every per-library
+      output.
+  tissue_id:
+    type: string
+    pattern: "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    description: >-
+      Biological specimen or tissue identifier, carried as metadata into the
+      scope manifests. Never a path component.
+  donor_id:
+    type: string
+    pattern: "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    description: >-
+      Donor the library came from. IGH clones are inferred per donor, and this is
+      a path component inside each scope's clones and intermediate directories.
+  path:
+    type: string
+    # Slash-separated relative segments, for example 'batch_1/library_a'. Every
+    # segment starts with a letter or digit, rejecting absolute paths, hidden
+    # directories and the dot segments that could leave deps.data.
+    # find_all_fastq_files() checks the joined directory is still inside
+    # deps.data as well.
+    pattern: "^[A-Za-z0-9][A-Za-z0-9_.+-]*(/[A-Za-z0-9][A-Za-z0-9_.+-]*)*$"
+    description: FASTQ subdirectory relative to deps.data.
+required:
+  - library_id
+  - tissue_id
+  - donor_id
+  - path
+# Further columns pass through. A scope reads their annotations only when it
+# explicitly selects this file as library report metadata.
+additionalProperties: true

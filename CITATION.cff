@@ -1,0 +1,36 @@
+# Citation metadata in Citation File Format 1.2.0.
+# Add the version, release date and DOI when the source release is published.
+cff-version: 1.2.0
+message: >-
+  Cite this software with the pipeline commit recorded in each release's
+  provenance.json, and cite the tools listed in the README.
+title: airrborne
+type: software
+authors:
+  - given-names: James
+    family-names: Douglas
+    affiliation: "Garvan Institute of Medical Research"
+    alias: jd-garv
+    orcid: "https://orcid.org/0009-0004-2559-026X"
+  - given-names: John
+    family-names: Reeves
+    affiliation: "Garvan Institute of Medical Research"
+    alias: johnyaku
+    orcid: "https://orcid.org/0000-0001-7368-7489"
+  - given-names: Hani Jieun
+    family-names: Kim
+    affiliation: "Garvan Institute of Medical Research"
+    alias: HaniJieunKim
+    orcid: "https://orcid.org/0000-0003-1844-3275"
+abstract: >-
+  A Snakemake 9 workflow that recovers B-cell and T-cell receptor sequences
+  from bulk RNA-seq and delivers one validated, self-contained release per
+  project.
+repository-code: https://github.com/swarbricklab/airrborne
+license: MIT
+keywords:
+  - adaptive immune receptor repertoire
+  - AIRR
+  - TRUST4
+  - bulk RNA-seq
+  - Snakemake

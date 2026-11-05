@@ -1,0 +1,16 @@
+# Writes the release: AIRR exports, scope repertoires, release assembly and the
+# report (the rules in workflow/rules/exports.smk and render_scope_report).
+# On Linux x86-64, Snakemake first tries envs/release.linux-64.pin.txt, which
+# fixes every package version. Pins generated 28 September 2026.
+#
+# Snakemake hashes this definition and the platform pin file when naming the cache.
+# After changing a dependency, follow docs/maintenance.md#update-the-release-environment
+# to regenerate the pins and update the date without overwriting pins on failure.
+name: release
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11.15
+  - bioconda::airr=2.0.0
+  - pyyaml=6.0.2

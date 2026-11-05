@@ -1,0 +1,39 @@
+{
+  "seed": 1337,
+  "genairr_version": "2.3.1",
+  "reference_sha256": "085536aa1a10e8492de129f3420f36713d71992b3e48d426e82fa166fd8ea50e",
+  "read_length": 150,
+  "fragment_length": 250,
+  "stride": 5,
+  "phred_quality": 40,
+  "representation": {
+    "SYN_D1_T1": {
+      "IGH_root": 14,
+      "IGH_early": 10,
+      "IGH_other": 8,
+      "TRB_1": 4,
+      "TRB_2": 2
+    },
+    "SYN_D1_T2": {
+      "IGH_early": 12,
+      "IGH_late": 10,
+      "IGH_distinct": 8,
+      "IGH_short_c": 3,
+      "TRB_1": 2,
+      "TRB_3": 4
+    },
+    "SYN_D2_T1": {
+      "IGH_root": 16,
+      "IGH_other_late": 12,
+      "TRB_1": 3,
+      "TRB_2": 5
+    },
+    "SYN_D2_T2": {
+      "IGH_other": 14,
+      "IGH_distinct": 12,
+      "IGH_stop": 3,
+      "TRB_2": 4,
+      "TRB_3": 2
+    }
+  }
+}

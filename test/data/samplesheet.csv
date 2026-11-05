@@ -1,0 +1,5 @@
+library_id,tissue_id,donor_id,sample_id,wts_sbj,wts_prj,wts_lib,path
+SYN_D1_T1,D1_T1,D1,D1_T1,D1,synthetic,SYN_D1_T1,SYN_D1_T1
+SYN_D1_T2,D1_T2,D1,D1_T2,D1,synthetic,SYN_D1_T2,SYN_D1_T2
+SYN_D2_T1,D2_T1,D2,D2_T1,D2,synthetic,SYN_D2_T1,SYN_D2_T1
+SYN_D2_T2,D2_T2,D2,D2_T2,D2,synthetic,SYN_D2_T2,SYN_D2_T2

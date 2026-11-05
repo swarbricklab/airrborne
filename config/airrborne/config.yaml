@@ -1,0 +1,283 @@
+# Example configuration for the airrborne pipeline.
+#
+# A first run edits deps and outs. Add membership_csv for separate projects
+# and scope_metadata for report annotations. The params section holds the
+# pipeline defaults for the analysis methods; its comments are reference for
+# reviewing a method, and a first run needs no change there.
+#
+# Edit this file to point the paths at your own data, or copy it for another
+# deployment. Settings are checked
+# against workflow/schemas/config.schema.yaml before the run starts, and an
+# unknown key stops the run rather than being ignored. Relative input, output
+# and resource paths resolve from the launch directory, not this file.
+# Values below are the pipeline defaults. Another configuration must supply
+# the required keys; it does not inherit them from this example.
+#
+# Two further settings belong on the command line instead of in this file:
+#
+#   analysis_only  Reuse retained assembly and depth products and skip FASTQ
+#                  discovery. run_module.sh --post-trust4 sets it, and a direct
+#                  Snakemake call passes --config analysis_only=True. Omitted,
+#                  the run starts from FASTQs.
+#   scope          Build one declared scope. run_module.sh --scope NAME sets it.
+#                  Omitted, every declared scope is built.
+
+# ---------------------------------------------------------------------------
+# Inputs
+# ---------------------------------------------------------------------------
+deps:
+  # One row per sequencing library, with the columns library_id, tissue_id,
+  # donor_id and path. Identifiers are read as strings, so 0460 and NA stay as
+  # written. Any further column is optional, and nothing reads it unless
+  # a scope explicitly uses this file as library report metadata. See
+  # config/airrborne/samplesheet.csv for a template.
+  samplesheet: config/airrborne/samplesheet.csv
+
+  # Top of your FASTQ tree. Each samplesheet row's `path` is appended to this,
+  # and the R1/R2 files are found inside the result.
+  data: data/
+
+  # Directory for obtained resources: the curated IMGT reference read by TRUST4
+  # and annotation, IgBLAST's auxiliary data, each image's identity receipt
+  # and, under Apptainer or Singularity, the analysis and TRUST4 SIFs. setup.sh
+  # and the first run write them here, and later runs reuse them. TRUST4's
+  # launcher receives this path unquoted, so it may contain only letters,
+  # digits and the characters _ . / : + -.
+  resources: resources/airrborne/
+
+  # The analysis image holding Immcantation, IgBLAST and R, pinned by OCI
+  # digest. setup.sh obtains it, and a launch obtains it when absent, for
+  # whichever runtime workflow/scripts/container_exec.sh selects: Apptainer
+  # and Singularity pull a SIF into deps.resources, and Docker pulls it into
+  # its daemon.
+  immcantation_docker: immcantation/suite@sha256:44e228a45b047bdb352363ab20a670336b003e98f3d1bac505f78af41a91ab67
+
+  # BioContainers packages TRUST4 1.1.10 as tag 1.1.10--h5814d7d_0, pinned here
+  # by OCI digest. Its run-trust4 declares version v1.1.10-r639. A run that
+  # assembles obtains it the same way as the analysis image. Apptainer and
+  # Singularity jobs run the obtained SIF; Docker jobs use the daemon image.
+  trust4_container: docker://quay.io/biocontainers/trust4@sha256:96509a456e709be36359d0d2734368c23b9c6560100dad89377d34030ef130c9
+
+# Optional. One CSV listing which libraries belong to which project, with columns
+# project, library_id and usage. Each row is one library in one project. Each
+# project is then analysed on its own, so an IGH clone is only ever inferred from
+# libraries inside the same project. Each project gets a self-contained release/
+# folder. A library may belong to several projects. Each row records a usage
+# of either analysed or fail_qc. A library marked fail_qc is left out of that
+# project. Such a row may name a library the samplesheet does
+# not carry, which records why that library is absent. See config/airrborne/membership.csv
+# for a template.
+#
+# Leave this commented out to analyse everything together as one group. The
+# reserved cohort scope holds every samplesheet library either way.
+# membership_csv: config/airrborne/membership.csv
+
+# The IMGT reference file name written into deps.resources: a bare file name of
+# letters, digits and the characters _ . + -. IgBLAST's auxiliary data file is
+# written beside it as human_gl.aux: the analysis image's NCBI file plus entries
+# for the J alleles it lacks.
+refs:
+  imgt_reference_name: human_IMGT+C.fa
+
+# ---------------------------------------------------------------------------
+# Where the outputs go
+# ---------------------------------------------------------------------------
+outs:
+  # TRUST4's launcher receives results_dir unquoted, so it has the same
+  # character limit as deps.resources.
+  results_dir: results/airrborne/
+  log_dir: logs/airrborne/
+
+# ---------------------------------------------------------------------------
+# Display context
+# ---------------------------------------------------------------------------
+# Optional annotations used only by each scope's web report. Scientific tables
+# keep their core identities and measurements. For downstream analysis, join
+# your original metadata to the headline by tissue_id or library_id.
+#
+# Each scope may supply a tissue file keyed by tissue_id and a library file
+# keyed by library_id. CSV and TSV are supported. Column names become report
+# labels as written; numeric values get continuous colours. No column
+# definitions are required. Omit columns to read all non-identifier fields,
+# or list only those wanted in this scope. Omit scopes needing no annotations.
+# A library source can explicitly name the samplesheet and select its fields.
+#
+# timepoint stays a tissue-level label. Optional numeric timepoint_order supplies
+# visit order. Use one order per label and distinct orders for distinct labels
+# within each scope. An optional treatment_phase column is ordinary metadata in
+# the same tissue file; visit labels/orders never imply a treatment phase.
+# Missing annotations never exclude a library. Integer codes with
+# leading zeroes stay labels; other entirely numeric columns become numbers.
+scope_metadata: {}
+# Example replacing the empty mapping:
+# scope_metadata:
+#   project_a:
+#     tissue:
+#       file: config/airrborne/tissue_metadata.csv
+#     library:
+#       file: config/airrborne/samplesheet.csv
+#       columns: [sequencing_batch]
+#   project_b:
+#     tissue:
+#       file: config/airrborne/tissue_metadata.csv
+#       columns: [timepoint, timepoint_order]
+
+# ---------------------------------------------------------------------------
+# Analysis settings
+# ---------------------------------------------------------------------------
+params:
+  # diversity.R calculates diversity from group read support. The released
+  # support vectors retain those counts. IGH uses donor/scope clones; other loci
+  # use exact nucleotide rearrangement groups.
+  rarefaction:
+    # Positive support depth for interpolation without replacement. Pipeline
+    # default: IGH 1000 and TRB 400. Keys are any of the seven loci, and each
+    # value must be a positive integer. Omit a locus to disable its target and
+    # curve; its diversity row and support vector remain. These are support
+    # units, not cells.
+    targets: {IGH: 1000, TRB: 400}
+  diversity:
+    # Minimum support for Shannon entropy, Hill q = 1 and q = 2, dominance and
+    # target-depth values. Observed richness, support and curves remain available.
+    # Zero applies no minimum. An omitted locus also uses zero.
+    # Pipeline default: 0 at every locus.
+    min_consensus_count: {IGH: 0, IGK: 0, IGL: 0, TRA: 0, TRB: 0, TRD: 0, TRG: 0}
+  # workflow/rules/assembly.smk passes these values to run-trust4.
+  trust4:
+    # Starting k-mer size for indexing contigs. Pipeline default: 9.
+    # TRUST4 1.1.10 -k defaults to 9 and increases this as contigs accumulate.
+    # Must be a positive integer.
+    k_mer_size: 9
+
+    # Minimum read coverage at each contig base. Pipeline default: 0.
+    # TRUST4 --contigMinCov defaults to 0, which disables this filter. Must be
+    # zero or a positive integer.
+    contig_min_cov: 0
+
+  # donor_distance_threshold.R fits donor evidence. scope_clone_threshold.R
+  # chooses the shared cutoff. assign_scope_donor_clones.R runs SCOPer.
+  lineage:
+    # Scope-wide IGH grouping threshold. Pipeline default: auto.
+    # SCOPer requires a threshold. A number from 0 to 1 becomes the operative
+    # cutoff; auto takes the median usable donor fit and falls back to 0.1 when no
+    # donor fit is usable. The donor fits run and are released either way, so the
+    # calibration tables always describe how the cutoff compares with the data.
+    # Distance is the fraction of differing junction nucleotides. Single linkage
+    # limits each joining link, so a clone can contain more distant members.
+    clonal_threshold: auto
+
+    # A donor needs this many finite nearest-neighbour distances for fitting.
+    # Pipeline default: 500. This is pipeline-specific; SHazaM has no
+    # corresponding argument default. Its 1000-distance bimodality guidance is
+    # empirical, not a valid-value bound. Must be an integer of at least 2.
+    min_fit_distances: 500
+
+    # Fraction limiting the GMM initialisation scan. Pipeline default: 0.9.
+    # SHazaM 1.3.2 findThreshold(edge) defaults to 0.9 and uses it in GMM mode.
+    # The scan stops when the fraction of distances below a candidate split
+    # exceeds this value. Must be strictly between 0 and 1. A value of 1 never
+    # satisfies that comparison, and 0 leaves the lower mixture component empty.
+    fit_edge: 0.9
+
+    # Specificity used to select the fitted cutoff. Pipeline default: 0.995.
+    # This is the fitted far-component mass above the cutoff, normalized over
+    # the minimum-to-maximum range of fitted distances, not measured clone
+    # assignment accuracy. See docs/interpretation.md for the pinned method.
+    # SHazaM 1.3.2 findThreshold(spc) defaults to NULL and requires a supplied
+    # value for the cutoff = "user" fit the pipeline runs. Must be from 0 to 1.
+    fit_specificity: 0.995
+
+    # Maximum distances sampled for a donor fit. Pipeline default: 10000.
+    # SHazaM 1.3.2 findThreshold(subsample) defaults to NULL, meaning all
+    # distances. Set null to use all. Otherwise must be an integer of at least 2.
+    fit_subsample: 10000
+
+    # Maximum unknown bases in the IGH junction. Pipeline default: 0.
+    # SCOPer max_n defaults to 0. The shared fitting/assignment gate counts
+    # N and ? and rejects other non-ATCG symbols. Non-IGH remains ATCG-only.
+    # Must be zero or a positive integer.
+    max_n: 0
+
+  # workflow/scripts/run_igblast_all_loci.sh owns the annotation tool calls.
+  igblast:
+    # Paths inside the supported analysis image. These identify the bundled
+    # annotation and IMGT germline resources, not numerical analysis thresholds.
+    igblast_db: /usr/local/share/igblast
+    germline_dir: /usr/local/share/germlines/imgt/human/vdj
+
+    # Maximum V and J alignments per query. Pipeline defaults: V 50 and J 20.
+    # IgBLAST 1.22.0 -num_alignments_V and -num_alignments_J default to 3 each.
+    # Each must be a positive integer.
+    # A top-score candidate list reaching its cap cannot establish resolution.
+    # A fuller tie can make a call ambiguous and remove the record from grouping.
+    num_alignments_v: 50
+    num_alignments_j: 20
+
+    # Maximum D alignments reported per query. Pipeline default: 3.
+    # IgBLAST -num_alignments_D defaults to 3. Changing it can change D-locus QC.
+    # Must be a positive integer.
+    num_alignments_d: 3
+
+    # Maximum C alignments reported per query. Pipeline default: 125.
+    # IgBLAST -num_alignments_C defaults to 2. The pinned IG C database contains
+    # 125 alleles; reporting all avoids falsely resolving truncated isotype ties.
+    # Must be a positive integer.
+    num_alignments_c: 125
+
+  # record_qc.R checks common QC. filter_airr.R removes failing records.
+  # isotype_calls.R checks constant calls separately without removing records.
+  airr_qc:
+    # Maximum N/n fraction over aligned positions, excluding gaps.
+    # Pipeline-specific default: 0.1. Zero permits no N/n; one removes the
+    # fraction ceiling, while an alignment still needs a positive denominator.
+    max_alignment_n_fraction: 0.1
+
+    # Minimum A/C/G/T positions in the best constant-region query alignment.
+    # Pipeline-specific default: 40.
+    # Zero removes the length floor. Failed calls lose only their isotype label;
+    # presence, locus compatibility and finite alignment evidence still apply.
+    min_informative_c_alignment_positions: 40
+
+  # shm_regions.R measures supported positions. shm_summaries.R applies coverage
+  # requirements and selects one qualifying source per sequence and region.
+  shm:
+    # Agreeing votes needed for a supported IMGT V position.
+    # Pipeline-specific default: 2. TRUST4 can write a synthetic one at positions
+    # with no votes, which motivates two. Zero removes the vote floor; unmapped
+    # positions remain missing, and only informative positions can contribute.
+    min_position_votes: 2
+
+    # Supported fraction of germline-occupied positions required per subregion.
+    # Pipeline-specific default: 1.0, requiring complete coverage. Whole V needs
+    # all five subregions. Zero removes this coverage floor; finite SHM rates
+    # and positive occupied denominators remain required. Valid range: 0 to 1.
+    min_supported_subregion_fraction: 1.0
+
+    # Minimum germline-occupied positions required for whole-V SHM.
+    # Pipeline-specific default: 270. Zero removes this absolute floor; the IMGT
+    # window has 312 positions. Valid values are integers from 0 to 312.
+    min_germline_occupied_v_positions: 270
+
+  # baseline_selection.R passes this value to SHazaM collapseClones.
+  selection:
+    # Minimum base frequency in a clone's effective sequence.
+    # Pipeline default: 0.6, the value used in SHazaM's BASELINe vignette.
+    # collapseClones(minimumFrequency) defaults to NULL; this method requires it.
+    # Values in (0, 1] are valid. Ties use the fixed A/T/G/C/N/./- order.
+    # Zero is rejected because the pinned method admits unobserved bases at
+    # every position when member sequences differ, including agreed positions.
+    collapse_min_freq: 0.6
+
+  # overlap_metrics.R compares library read-support vectors within each donor.
+  overlap:
+    # Loci compared between libraries of one donor. Pipeline default: IGH/TRB.
+    # This is pipeline-specific and separate from rarefaction targets. Valid
+    # entries are IGH, TRA, TRB, TRD and TRG and the list cannot be empty, so
+    # there is no disabled value; removing a locus removes its rows. Each
+    # comparison needs its two libraries; there is no extra donor-size gate.
+    loci: [IGH, TRB]
+    # Both endpoints must meet this minimum for default pair report summaries.
+    # Pipeline default: 0 at every locus. Values remain released with a support
+    # flag. Zero (also an omitted locus) disables the positive minimum. These are
+    # read-support units, not cells.
+    min_consensus_count: {IGH: 0, TRA: 0, TRB: 0, TRD: 0, TRG: 0}

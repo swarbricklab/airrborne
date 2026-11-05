@@ -1,0 +1,22 @@
+# Keep generated results, reference downloads and container images out of git.
+/logs
+/results
+/resources
+/experiments
+/.snakemake
+.cache/
+__pycache__/
+*.sif
+.wget-hsts
+
+# Working notes under docs/ stay on this machine and out of the repository.
+# Only the guides listed here are published; everything else in docs/, including
+# docs/measurements/ and docs/literature_papers/, stays on disk and is ignored.
+/docs/*
+!/docs/graphs/
+!/docs/glossary.md
+!/docs/interpretation.md
+!/docs/qc_matrix.md
+!/docs/running.md
+!/docs/maintenance.md
+!/docs/data_dictionary.csv

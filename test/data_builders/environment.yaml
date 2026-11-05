@@ -1,0 +1,14 @@
+# Regenerates the synthetic fixture with test/data_builders/generate_receptors.py. Only a
+# deliberate fixture change needs it; acceptance runs read the committed inputs.
+# GenAIRR is licensed GPL-3.0-or-later and stays outside the pipeline's own
+# environments.
+name: trust4-fixture-generator
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - biopython=1.85
+  - pyyaml=6.0.3
+  - pip
+  - pip:
+      - GenAIRR==2.3.1

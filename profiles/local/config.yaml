@@ -1,0 +1,166 @@
+# Local execution profile used by run_module.sh, including system tests.
+# Container rules run
+# through workflow/scripts/container_exec.sh with Apptainer, Singularity or
+# Docker, so this profile carries no container settings.
+
+# Snakemake options for local execution. One retry absorbs a transient
+# container start failure, such as a squashfs mount race when several
+# containers start together on one node. Snakemake prints the failed log
+# before the retry, so a repeatable failure still stops the run.
+restart-times: 1
+rerun-incomplete: true
+keep-going: false
+
+# The AIRR export, release and report rules declare envs/release.yaml.
+# setup.sh creates that environment with Conda and network access, under the
+# prefix below in the launch directory. A launch creates it when it is absent.
+software-deployment-method: [conda]
+conda-prefix: .snakemake/conda
+# The Snakemake `threads` value is the single CPU authority used by both the
+# scheduler and the commands invoked by these rules. Rules that are named here
+# ask for more than one core; every other rule takes the single-core default it
+# declares in the rule itself.
+set-threads:
+    run_trust4: 8
+    reannotate_igblast: 8
+
+# Run jobs on the local host.
+
+# Per-rule resources for local execution. `mem_mb` is megabytes and `runtime` is
+# minutes, the same notation profiles/workflow/config.yaml uses, so the two files
+# can be compared entry by entry. These values only schedule jobs: Snakemake
+# starts jobs together while their mem_mb values fit within --resources mem_mb,
+# and nothing enforces a value on a running job. They are smaller than the
+# scheduler requests because one host or allocation runs several jobs at once.
+# No real-library benchmark is recorded for these requests. Raise `run_trust4`
+# for deep libraries when measured memory use requires it, so
+# fewer assemblies share the memory at the same time. `all`, `post_trust4_all`, `build_scope_manifest`,
+# `build_scope_assignment`, `obtain_analysis_image` and `obtain_assembly_image`
+# have no entry: they only collect targets or are declared localrules.
+set-resources:
+    prepare_igh_grouping:
+        mem_mb: 4000
+        runtime: 30
+    export_library_airr:
+        mem_mb: 2000
+        runtime: 30
+    annotate_scope_airr:
+        mem_mb: 2000
+        runtime: 15
+    build_scope_headline:
+        mem_mb: 2000
+        runtime: 30
+    build_scope_repertoires:
+        mem_mb: 2000
+        runtime: 30
+    capture_tool_versions:
+        mem_mb: 2000
+        runtime: 15
+    build_scope_provenance:
+        mem_mb: 2000
+        runtime: 15
+    collect_scope_rarefaction_curves:
+        mem_mb: 1000
+        runtime: 30
+    collect_scope_vj_pair_usage:
+        mem_mb: 1000
+        runtime: 30
+    prepare_scope_report:
+        mem_mb: 4000
+        runtime: 30
+    render_scope_report:
+        mem_mb: 4000
+        runtime: 30
+    normalise_input_depth:
+        mem_mb: 500
+        runtime: 10
+    qualify_isotype_calls:
+        mem_mb: 4000
+        runtime: 30
+    collect_scope_library_metric:
+        mem_mb: 1000 # Streams one library table at a time.
+        runtime: 30
+    collect_scope_qc_audit:
+        mem_mb: 1000 # Collects library and donor population counts.
+        runtime: 30
+    audit_imgt_reference:
+        mem_mb: 2000
+        runtime: 15
+    obtain_imgt_reference:
+        mem_mb: 4000
+        runtime: 60
+    run_trust4:
+        mem_mb: 32000
+        runtime: 480
+    count_sequencing_depth:
+        mem_mb: 2000
+        runtime: 240
+    filter_airr:
+        mem_mb: 8000
+        runtime: 60
+    calculate_igh_features:
+        mem_mb: 8000
+        runtime: 60
+    build_igh_consensus_votes:
+        mem_mb: 8000
+        runtime: 60
+    build_clonotypes:
+        mem_mb: 8000
+        runtime: 60
+    calculate_library_clonotype_diversity:
+        mem_mb: 8000
+        runtime: 60
+    reannotate_igblast:
+        mem_mb: 16000
+        runtime: 360
+    calculate_isotype:
+        mem_mb: 4000
+        runtime: 30
+    summarise_library_yield:
+        mem_mb: 8000
+        runtime: 60
+    pool_scope_donor_igh:
+        mem_mb: 8000
+        runtime: 60
+    fit_donor_threshold:
+        mem_mb: 8000
+        runtime: 60
+    resolve_scope_clone_threshold:
+        mem_mb: 4000
+        runtime: 30
+    assign_scope_donor_clones:
+        mem_mb: 16000
+        runtime: 120
+    calculate_donor_igh_summaries:
+        mem_mb: 16000
+        runtime: 120
+    calculate_scope_clone_diversity:
+        mem_mb: 8000
+        runtime: 60
+    calculate_donor_selection:
+        mem_mb: 16000
+        runtime: 120
+    calculate_donor_overlap:
+        mem_mb: 8000
+        runtime: 60
+    collect_scope_overlap:
+        mem_mb: 8000
+        runtime: 60
+    collect_scope_selection:
+        mem_mb: 8000
+        runtime: 60
+    collect_scope_donor_metric:
+        mem_mb: 1000 # One buffered row per sorted donor input.
+        runtime: 30
+    collect_scope_group_abundance:
+        mem_mb: 8000
+        runtime: 60
+    assemble_scope_release:
+        mem_mb: 4000
+        runtime: 30
+
+# Local execution settings. --cores N on the command line replaces this limit,
+# and inside a scheduler job run_module.sh sets it from the allocation.
+cores: 8
+max-jobs-per-second: 1
+latency-wait: 30  # Allow time for local output files to become visible

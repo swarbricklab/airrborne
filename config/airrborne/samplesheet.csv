@@ -1,0 +1,5 @@
+library_id,tissue_id,donor_id,path,sequencing_batch
+library_a,tissue_1,donor_1,batch_1/library_a,batch_1
+library_b,tissue_2,donor_1,batch_1/library_b,batch_1
+library_c,tissue_3,donor_2,batch_2/library_c,batch_2
+library_d,tissue_4,donor_2,batch_2/library_d,batch_2

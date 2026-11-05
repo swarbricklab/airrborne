@@ -1,0 +1,927 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1634pt" height="1321pt" viewBox="0.00 0.00 1633.90 1321.40">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(25.2 1296.2)">
+<title>airrborne</title>
+<polygon fill="#ffffff" stroke="transparent" points="-25.2,25.2 -25.2,-1296.2 1608.7,-1296.2 1608.7,25.2 -25.2,25.2" />
+<text text-anchor="start" x="727.75" y="-1238.3" font-family="sans-serif" font-weight="bold" font-size="24.00" fill="#243746">airrborne</text>
+<text text-anchor="start" x="592.25" y="-1207.3" font-family="sans-serif" font-size="14.00" fill="#243746">Workflow rules grouped by the README analysis stages</text>
+<polygon fill="#e0f2fe" stroke="transparent" points="430.75,-1174.5 430.75,-1193.5 580.75,-1193.5 580.75,-1174.5 430.75,-1174.5" />
+<text text-anchor="start" x="432.75" y="-1180.3" font-family="sans-serif" font-size="14.00" fill="#243746"> Receptor assembly </text>
+<polygon fill="#fef3c7" stroke="transparent" points="588.75,-1174.5 588.75,-1193.5 817.75,-1193.5 817.75,-1174.5 588.75,-1174.5" />
+<text text-anchor="start" x="590.75" y="-1180.3" font-family="sans-serif" font-size="14.00" fill="#243746"> Annotation and quality checks </text>
+<polygon fill="#fce7f3" stroke="transparent" points="825.75,-1174.5 825.75,-1193.5 975.75,-1193.5 975.75,-1174.5 825.75,-1174.5" />
+<text text-anchor="start" x="851.75" y="-1180.3" font-family="sans-serif" font-size="14.00" fill="#243746"> IGH analysis </text>
+<polygon fill="#ffedd5" stroke="transparent" points="983.75,-1174.5 983.75,-1193.5 1153.75,-1193.5 1153.75,-1174.5 983.75,-1174.5" />
+<text text-anchor="start" x="985.75" y="-1180.3" font-family="sans-serif" font-size="14.00" fill="#243746"> Other receptor chains </text>
+<polygon fill="#ccfbf1" stroke="transparent" points="430.75,-1147.5 430.75,-1166.5 580.75,-1166.5 580.75,-1147.5 430.75,-1147.5" />
+<text text-anchor="start" x="439.25" y="-1153.3" font-family="sans-serif" font-size="14.00" fill="#243746"> AIRR annotations </text>
+<polygon fill="#ede9fe" stroke="transparent" points="588.75,-1147.5 588.75,-1166.5 817.75,-1166.5 817.75,-1147.5 588.75,-1147.5" />
+<text text-anchor="start" x="618.75" y="-1153.3" font-family="sans-serif" font-size="14.00" fill="#243746"> Repertoire summaries </text>
+<polygon fill="#dcfce7" stroke="transparent" points="825.75,-1147.5 825.75,-1166.5 975.75,-1166.5 975.75,-1147.5 825.75,-1147.5" />
+<text text-anchor="start" x="827.75" y="-1153.3" font-family="sans-serif" font-size="14.00" fill="#243746"> Release and report </text>
+<polygon fill="#eef1f5" stroke="transparent" points="983.75,-1147.5 983.75,-1166.5 1153.75,-1166.5 1153.75,-1147.5 983.75,-1147.5" />
+<text text-anchor="start" x="1000.75" y="-1153.3" font-family="sans-serif" font-size="14.00" fill="#243746"> Workflow support </text>
+<text text-anchor="start" x="623.75" y="-1128.7" font-family="sans-serif" font-size="11.00" fill="#243746">Redundant arrows omitted; all dependency paths retained.</text>
+<text text-anchor="start" x="591.25" y="-1116.7" font-family="sans-serif" font-size="11.00" fill="#243746">Workflow support covers inputs, software, references and provenance.</text>
+
+<g id="node1" class="node" data-stage="airr">
+<title>annotate_scope_airr</title>
+<g id="a_node1"><a xlink:title="annotate_scope_airr">
+<path fill="#ccfbf1" stroke="#9aabb8" d="M359.5,-367C359.5,-367 252.5,-367 252.5,-367 246.5,-367 240.5,-361 240.5,-355 240.5,-355 240.5,-343 240.5,-343 240.5,-337 246.5,-331 252.5,-331 252.5,-331 359.5,-331 359.5,-331 365.5,-331 371.5,-337 371.5,-343 371.5,-343 371.5,-355 371.5,-355 371.5,-361 365.5,-367 359.5,-367" />
+<text text-anchor="middle" x="306" y="-346.2" font-family="sans-serif" font-size="11.00" fill="#243746">annotate scope airr</text>
+</a>
+</g>
+</g>
+
+<g id="node2" class="node" data-stage="release">
+<title>assemble_scope_release</title>
+<g id="a_node2"><a xlink:title="assemble_scope_release">
+<path fill="#dcfce7" stroke="#9aabb8" d="M298,-36C298,-36 166,-36 166,-36 160,-36 154,-30 154,-24 154,-24 154,-12 154,-12 154,-6 160,0 166,0 166,0 298,0 298,0 304,0 310,-6 310,-12 310,-12 310,-24 310,-24 310,-30 304,-36 298,-36" />
+<text text-anchor="middle" x="232" y="-15.2" font-family="sans-serif" font-size="11.00" fill="#243746">assemble scope release</text>
+</a>
+</g>
+</g>
+
+<g id="edge1" class="edge">
+<title>46-&gt;1</title>
+<path fill="none" stroke="#8e9eac" d="M301.6113,-330.756C291.8179,-289.8807 267.5806,-187.8093 249,-102 244.6251,-81.7957 239.9916,-58.78 236.6688,-41.9556" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="238.7264,-41.5352 235.5068,-36.054 234.6055,-42.3467 238.7264,-41.5352" />
+</g>
+
+<g id="node3" class="node" data-stage="igh">
+<title>assign_scope_donor_clones</title>
+<g id="a_node3"><a xlink:title="assign_scope_donor_clones">
+<path fill="#fce7f3" stroke="#9aabb8" d="M997.5,-502C997.5,-502 850.5,-502 850.5,-502 844.5,-502 838.5,-496 838.5,-490 838.5,-490 838.5,-478 838.5,-478 838.5,-472 844.5,-466 850.5,-466 850.5,-466 997.5,-466 997.5,-466 1003.5,-466 1009.5,-472 1009.5,-478 1009.5,-478 1009.5,-490 1009.5,-490 1009.5,-496 1003.5,-502 997.5,-502" />
+<text text-anchor="middle" x="924" y="-481.2" font-family="sans-serif" font-size="11.00" fill="#243746">assign scope donor clones</text>
+</a>
+</g>
+</g>
+
+<g id="node4" class="node" data-stage="igh">
+<title>calculate_donor_igh_summaries</title>
+<g id="a_node4"><a xlink:title="calculate_donor_igh_summaries">
+<path fill="#fce7f3" stroke="#9aabb8" d="M768.5,-436C768.5,-436 663.5,-436 663.5,-436 657.5,-436 651.5,-430 651.5,-424 651.5,-424 651.5,-410 651.5,-410 651.5,-404 657.5,-398 663.5,-398 663.5,-398 768.5,-398 768.5,-398 774.5,-398 780.5,-404 780.5,-410 780.5,-410 780.5,-424 780.5,-424 780.5,-430 774.5,-436 768.5,-436" />
+<text text-anchor="middle" x="716" y="-420.2" font-family="sans-serif" font-size="11.00" fill="#243746">calculate donor igh</text>
+<text text-anchor="middle" x="716" y="-408.2" font-family="sans-serif" font-size="11.00" fill="#243746">summaries</text>
+</a>
+</g>
+</g>
+
+<g id="edge2" class="edge">
+<title>23-&gt;19</title>
+<path fill="none" stroke="#8e9eac" d="M867.9862,-465.9571C841.1382,-457.3089 808.8255,-446.9005 780.9102,-437.9086" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="781.3786,-435.8532 775.0237,-436.0124 780.0908,-439.851 781.3786,-435.8532" />
+</g>
+
+<g id="node5" class="node" data-stage="summaries">
+<title>calculate_donor_overlap</title>
+<g id="a_node5"><a xlink:title="calculate_donor_overlap">
+<path fill="#ede9fe" stroke="#9aabb8" d="M623.5,-435C623.5,-435 494.5,-435 494.5,-435 488.5,-435 482.5,-429 482.5,-423 482.5,-423 482.5,-411 482.5,-411 482.5,-405 488.5,-399 494.5,-399 494.5,-399 623.5,-399 623.5,-399 629.5,-399 635.5,-405 635.5,-411 635.5,-411 635.5,-423 635.5,-423 635.5,-429 629.5,-435 623.5,-435" />
+<text text-anchor="middle" x="559" y="-414.2" font-family="sans-serif" font-size="11.00" fill="#243746">calculate donor overlap</text>
+</a>
+</g>
+</g>
+
+<g id="edge3" class="edge">
+<title>23-&gt;37</title>
+<path fill="none" stroke="#8e9eac" d="M838.3788,-467.3209C835.8928,-466.871 833.4291,-466.4298 831,-466 748.1137,-451.334 726.6671,-451.8551 644,-436 643.3317,-435.8718 642.6607,-435.7423 641.9872,-435.6115" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="642.1606,-433.5052 635.8672,-434.402 641.3462,-437.6255 642.1606,-433.5052" />
+</g>
+
+<g id="node6" class="node" data-stage="igh">
+<title>calculate_donor_selection</title>
+<g id="a_node6"><a xlink:title="calculate_donor_selection">
+<path fill="#fce7f3" stroke="#9aabb8" d="M1249,-435C1249,-435 1111,-435 1111,-435 1105,-435 1099,-429 1099,-423 1099,-423 1099,-411 1099,-411 1099,-405 1105,-399 1111,-399 1111,-399 1249,-399 1249,-399 1255,-399 1261,-405 1261,-411 1261,-411 1261,-423 1261,-423 1261,-429 1255,-435 1249,-435" />
+<text text-anchor="middle" x="1180" y="-414.2" font-family="sans-serif" font-size="11.00" fill="#243746">calculate donor selection</text>
+</a>
+</g>
+</g>
+
+<g id="edge4" class="edge">
+<title>23-&gt;27</title>
+<path fill="none" stroke="#8e9eac" d="M992.9401,-465.9571C1027.5185,-456.9073 1069.4619,-445.9299 1104.8615,-436.6652" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1105.6641,-438.6259 1110.9368,-435.0751 1104.6006,-434.5628 1105.6641,-438.6259" />
+</g>
+
+<g id="node7" class="node" data-stage="summaries">
+<title>calculate_scope_clone_diversity</title>
+<g id="a_node7"><a xlink:title="calculate_scope_clone_diversity">
+<path fill="#ede9fe" stroke="#9aabb8" d="M1070.5,-436C1070.5,-436 953.5,-436 953.5,-436 947.5,-436 941.5,-430 941.5,-424 941.5,-424 941.5,-410 941.5,-410 941.5,-404 947.5,-398 953.5,-398 953.5,-398 1070.5,-398 1070.5,-398 1076.5,-398 1082.5,-404 1082.5,-410 1082.5,-410 1082.5,-424 1082.5,-424 1082.5,-430 1076.5,-436 1070.5,-436" />
+<text text-anchor="middle" x="1012" y="-420.2" font-family="sans-serif" font-size="11.00" fill="#243746">calculate scope clone</text>
+<text text-anchor="middle" x="1012" y="-408.2" font-family="sans-serif" font-size="11.00" fill="#243746">diversity</text>
+</a>
+</g>
+</g>
+
+<g id="edge5" class="edge">
+<title>23-&gt;30</title>
+<path fill="none" stroke="#8e9eac" d="M948.0464,-465.692C958.4611,-457.7625 970.7682,-448.3924 981.7907,-440.0003" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="983.2515,-441.5275 986.7533,-436.2219 980.7073,-438.1858 983.2515,-441.5275" />
+</g>
+
+<g id="edge20" class="edge">
+<title>19-&gt;46</title>
+<path fill="none" stroke="#8e9eac" d="M651.3283,-399.5151C648.8594,-398.9808 646.4103,-398.4732 644,-398 542.8428,-378.1408 515.9007,-383.6013 414,-368 402.1942,-366.1925 389.6889,-364.1299 377.5359,-362.0457" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="377.8726,-359.9729 371.6028,-361.0219 377.1583,-364.1117 377.8726,-359.9729" />
+</g>
+
+<g id="node23" class="node" data-stage="summaries">
+<title>collect_scope_donor_metric</title>
+<g id="a_node23"><a xlink:title="collect_scope_donor_metric">
+<path fill="#ede9fe" stroke="#9aabb8" d="M540,-368C540,-368 434,-368 434,-368 428,-368 422,-362 422,-356 422,-356 422,-342 422,-342 422,-336 428,-330 434,-330 434,-330 540,-330 540,-330 546,-330 552,-336 552,-342 552,-342 552,-356 552,-356 552,-362 546,-368 540,-368" />
+<text text-anchor="middle" x="487" y="-352.2" font-family="sans-serif" font-size="11.00" fill="#243746">collect scope donor</text>
+<text text-anchor="middle" x="487" y="-340.2" font-family="sans-serif" font-size="11.00" fill="#243746">metric</text>
+</a>
+</g>
+</g>
+
+<g id="edge21" class="edge">
+<title>19-&gt;12</title>
+<path fill="none" stroke="#8e9eac" d="M651.9062,-397.9678C622.383,-389.2011 587.2737,-378.7756 557.054,-369.802" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="557.4279,-367.7225 551.0783,-368.0276 556.2323,-371.7488 557.4279,-367.7225" />
+</g>
+
+<g id="node24" class="node" data-stage="summaries">
+<title>collect_scope_overlap</title>
+<g id="a_node24"><a xlink:title="collect_scope_overlap">
+<path fill="#ede9fe" stroke="#9aabb8" d="M480.5,-300C480.5,-300 365.5,-300 365.5,-300 359.5,-300 353.5,-294 353.5,-288 353.5,-288 353.5,-276 353.5,-276 353.5,-270 359.5,-264 365.5,-264 365.5,-264 480.5,-264 480.5,-264 486.5,-264 492.5,-270 492.5,-276 492.5,-276 492.5,-288 492.5,-288 492.5,-294 486.5,-300 480.5,-300" />
+<text text-anchor="middle" x="423" y="-279.2" font-family="sans-serif" font-size="11.00" fill="#243746">collect scope overlap</text>
+</a>
+</g>
+</g>
+
+<g id="edge22" class="edge">
+<title>37-&gt;36</title>
+<path fill="none" stroke="#8e9eac" d="M482.4059,-399.743C452.2902,-391.2711 422.792,-380.2515 414,-368 401.2609,-350.2483 405.9164,-324.8831 412.3052,-306.2997" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="414.4193,-306.6344 414.5156,-300.2782 410.4765,-305.187 414.4193,-306.6344" />
+</g>
+
+<g id="node25" class="node" data-stage="summaries">
+<title>collect_scope_selection</title>
+<g id="a_node25"><a xlink:title="collect_scope_selection">
+<path fill="#ede9fe" stroke="#9aabb8" d="M1515.5,-367C1515.5,-367 1392.5,-367 1392.5,-367 1386.5,-367 1380.5,-361 1380.5,-355 1380.5,-355 1380.5,-343 1380.5,-343 1380.5,-337 1386.5,-331 1392.5,-331 1392.5,-331 1515.5,-331 1515.5,-331 1521.5,-331 1527.5,-337 1527.5,-343 1527.5,-343 1527.5,-355 1527.5,-355 1527.5,-361 1521.5,-367 1515.5,-367" />
+<text text-anchor="middle" x="1454" y="-346.2" font-family="sans-serif" font-size="11.00" fill="#243746">collect scope selection</text>
+</a>
+</g>
+</g>
+
+<g id="edge23" class="edge">
+<title>27-&gt;31</title>
+<path fill="none" stroke="#8e9eac" d="M1252.7076,-398.9558C1290.481,-389.5814 1336.6876,-378.114 1375.2992,-368.5316" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1376.111,-370.4939 1381.4285,-367.0105 1375.0993,-366.4176 1376.111,-370.4939" />
+</g>
+
+<g id="node28" class="node" data-stage="summaries">
+<title>collect_scope_diversity</title>
+<g id="a_node28"><a xlink:title="collect_scope_diversity">
+<path fill="#ede9fe" stroke="#9aabb8" d="M1352,-367C1352,-367 1230,-367 1230,-367 1224,-367 1218,-361 1218,-355 1218,-355 1218,-343 1218,-343 1218,-337 1224,-331 1230,-331 1230,-331 1352,-331 1352,-331 1358,-331 1364,-337 1364,-343 1364,-343 1364,-355 1364,-355 1364,-361 1358,-367 1352,-367" />
+<text text-anchor="middle" x="1291" y="-346.2" font-family="sans-serif" font-size="11.00" fill="#243746">collect scope diversity</text>
+</a>
+</g>
+</g>
+
+<g id="edge32" class="edge">
+<title>30-&gt;28</title>
+<path fill="none" stroke="#8e9eac" d="M1082.7642,-399.7528C1122.1552,-390.1521 1171.2945,-378.1755 1211.9445,-368.268" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1212.5463,-370.2829 1217.8783,-366.8218 1211.5517,-366.2023 1212.5463,-370.2829" />
+</g>
+
+<g id="node29" class="node" data-stage="summaries">
+<title>collect_scope_gene_usage</title>
+<g id="a_node29"><a xlink:title="collect_scope_gene_usage">
+<path fill="#ede9fe" stroke="#9aabb8" d="M1190,-367C1190,-367 1050,-367 1050,-367 1044,-367 1038,-361 1038,-355 1038,-355 1038,-343 1038,-343 1038,-337 1044,-331 1050,-331 1050,-331 1190,-331 1190,-331 1196,-331 1202,-337 1202,-343 1202,-343 1202,-355 1202,-355 1202,-361 1196,-367 1190,-367" />
+<text text-anchor="middle" x="1120" y="-346.2" font-family="sans-serif" font-size="11.00" fill="#243746">collect scope gene usage</text>
+</a>
+</g>
+</g>
+
+<g id="edge33" class="edge">
+<title>30-&gt;32</title>
+<path fill="none" stroke="#8e9eac" d="M1042.3714,-397.8772C1055.9208,-389.3462 1071.9424,-379.2585 1085.9012,-370.4696" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1087.3819,-372.0189 1091.3404,-367.0449 1085.1441,-368.4647 1087.3819,-372.0189" />
+</g>
+
+<g id="node30" class="node" data-stage="summaries">
+<title>collect_scope_group_abundance</title>
+<g id="a_node30"><a xlink:title="collect_scope_group_abundance">
+<path fill="#ede9fe" stroke="#9aabb8" d="M835.5,-368C835.5,-368 728.5,-368 728.5,-368 722.5,-368 716.5,-362 716.5,-356 716.5,-356 716.5,-342 716.5,-342 716.5,-336 722.5,-330 728.5,-330 728.5,-330 835.5,-330 835.5,-330 841.5,-330 847.5,-336 847.5,-342 847.5,-342 847.5,-356 847.5,-356 847.5,-362 841.5,-368 835.5,-368" />
+<text text-anchor="middle" x="782" y="-352.2" font-family="sans-serif" font-size="11.00" fill="#243746">collect scope group</text>
+<text text-anchor="middle" x="782" y="-340.2" font-family="sans-serif" font-size="11.00" fill="#243746">abundance</text>
+</a>
+</g>
+</g>
+
+<g id="edge34" class="edge">
+<title>30-&gt;35</title>
+<path fill="none" stroke="#8e9eac" d="M947.6263,-397.9678C917.9742,-389.2011 882.7116,-378.7756 852.3599,-369.802" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="852.7073,-367.715 846.3581,-368.0276 851.5165,-371.7426 852.7073,-367.715" />
+</g>
+
+<g id="node31" class="node" data-stage="summaries">
+<title>collect_scope_rarefaction_curves</title>
+<g id="a_node31"><a xlink:title="collect_scope_rarefaction_curves">
+<path fill="#ede9fe" stroke="#9aabb8" d="M1010,-368C1010,-368 876,-368 876,-368 870,-368 864,-362 864,-356 864,-356 864,-342 864,-342 864,-336 870,-330 876,-330 876,-330 1010,-330 1010,-330 1016,-330 1022,-336 1022,-342 1022,-342 1022,-356 1022,-356 1022,-362 1016,-368 1010,-368" />
+<text text-anchor="middle" x="943" y="-352.2" font-family="sans-serif" font-size="11.00" fill="#243746">collect scope rarefaction</text>
+<text text-anchor="middle" x="943" y="-340.2" font-family="sans-serif" font-size="11.00" fill="#243746">curves</text>
+</a>
+</g>
+</g>
+
+<g id="edge35" class="edge">
+<title>30-&gt;34</title>
+<path fill="none" stroke="#8e9eac" d="M992.4119,-397.6958C984.4783,-389.8771 975.2418,-380.7746 966.916,-372.5694" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="968.1458,-370.8329 962.3982,-368.1171 965.1977,-373.8244 968.1458,-370.8329" />
+</g>
+
+<g id="node32" class="node" data-stage="summaries">
+<title>collect_scope_vj_pair_usage</title>
+<g id="a_node32"><a xlink:title="collect_scope_vj_pair_usage">
+<path fill="#ede9fe" stroke="#9aabb8" d="M688,-368C688,-368 580,-368 580,-368 574,-368 568,-362 568,-356 568,-356 568,-342 568,-342 568,-336 574,-330 580,-330 580,-330 688,-330 688,-330 694,-330 700,-336 700,-342 700,-342 700,-356 700,-356 700,-362 694,-368 688,-368" />
+<text text-anchor="middle" x="634" y="-352.2" font-family="sans-serif" font-size="11.00" fill="#243746">collect scope vj pair</text>
+<text text-anchor="middle" x="634" y="-340.2" font-family="sans-serif" font-size="11.00" fill="#243746">usage</text>
+</a>
+</g>
+</g>
+
+<g id="edge36" class="edge">
+<title>30-&gt;33</title>
+<path fill="none" stroke="#8e9eac" d="M941.4959,-399.4699C938.9701,-398.9554 936.4656,-398.4633 934,-398 834.8503,-379.3688 808.0631,-387.086 709,-368 708.0932,-367.8253 707.181,-367.6463 706.2644,-367.4633" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="706.4612,-365.3596 700.1603,-366.2019 705.6111,-369.4727 706.4612,-365.3596" />
+</g>
+
+<g id="node8" class="node" data-stage="support">
+<title>audit_imgt_reference</title>
+<g id="a_node8"><a xlink:title="audit_imgt_reference">
+<path fill="#eef1f5" stroke="#9aabb8" d="M471.5,-834C471.5,-834 358.5,-834 358.5,-834 352.5,-834 346.5,-828 346.5,-822 346.5,-822 346.5,-810 346.5,-810 346.5,-804 352.5,-798 358.5,-798 358.5,-798 471.5,-798 471.5,-798 477.5,-798 483.5,-804 483.5,-810 483.5,-810 483.5,-822 483.5,-822 483.5,-828 477.5,-834 471.5,-834" />
+<text text-anchor="middle" x="415" y="-813.2" font-family="sans-serif" font-size="11.00" fill="#243746">audit imgt reference</text>
+</a>
+</g>
+</g>
+
+<g id="node9" class="node" data-stage="support">
+<title>build_scope_provenance</title>
+<g id="a_node9"><a xlink:title="build_scope_provenance">
+<path fill="#eef1f5" stroke="#9aabb8" d="M419,-702C419,-702 287,-702 287,-702 281,-702 275,-696 275,-690 275,-690 275,-678 275,-678 275,-672 281,-666 287,-666 287,-666 419,-666 419,-666 425,-666 431,-672 431,-678 431,-678 431,-690 431,-690 431,-696 425,-702 419,-702" />
+<text text-anchor="middle" x="353" y="-681.2" font-family="sans-serif" font-size="11.00" fill="#243746">build scope provenance</text>
+</a>
+</g>
+</g>
+
+<g id="edge6" class="edge">
+<title>41-&gt;39</title>
+<path fill="none" stroke="#8e9eac" d="M406.5092,-797.9227C395.5327,-774.5536 376.3876,-733.793 364.2214,-707.8906" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="366.0389,-706.8205 361.5872,-702.2825 362.2373,-708.6061 366.0389,-706.8205" />
+</g>
+
+<g id="node21" class="node" data-stage="airr">
+<title>build_scope_repertoires</title>
+<g id="a_node21"><a xlink:title="build_scope_repertoires">
+<path fill="#ccfbf1" stroke="#9aabb8" d="M177.5,-367C177.5,-367 50.5,-367 50.5,-367 44.5,-367 38.5,-361 38.5,-355 38.5,-355 38.5,-343 38.5,-343 38.5,-337 44.5,-331 50.5,-331 50.5,-331 177.5,-331 177.5,-331 183.5,-331 189.5,-337 189.5,-343 189.5,-343 189.5,-355 189.5,-355 189.5,-361 183.5,-367 177.5,-367" />
+<text text-anchor="middle" x="114" y="-346.2" font-family="sans-serif" font-size="11.00" fill="#243746">build scope repertoires</text>
+</a>
+</g>
+</g>
+
+<g id="edge17" class="edge">
+<title>39-&gt;42</title>
+<path fill="none" stroke="#8e9eac" d="M274.7622,-670.0804C249.746,-662.8949 223.0978,-652.1098 202,-636 166.2372,-608.6923 147,-595.9966 147,-551 147,-551 147,-551 147,-484 147,-444.2969 133.365,-399.856 123.624,-373.1727" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="125.5489,-372.3239 121.4882,-367.433 121.6125,-373.7887 125.5489,-372.3239" />
+</g>
+
+<g id="node22" class="node" data-stage="release">
+<title>render_scope_report</title>
+<g id="a_node22"><a xlink:title="render_scope_report">
+<path fill="#dcfce7" stroke="#9aabb8" d="M378.5,-102C378.5,-102 269.5,-102 269.5,-102 263.5,-102 257.5,-96 257.5,-90 257.5,-90 257.5,-78 257.5,-78 257.5,-72 263.5,-66 269.5,-66 269.5,-66 378.5,-66 378.5,-66 384.5,-66 390.5,-72 390.5,-78 390.5,-78 390.5,-90 390.5,-90 390.5,-96 384.5,-102 378.5,-102" />
+<text text-anchor="middle" x="324" y="-81.2" font-family="sans-serif" font-size="11.00" fill="#243746">render scope report</text>
+</a>
+</g>
+</g>
+
+<g id="edge18" class="edge">
+<title>39-&gt;43</title>
+<path fill="none" stroke="#8e9eac" d="M312.3418,-665.958C271.6353,-644.805 215,-605.5694 215,-551 215,-551 215,-551 215,-349 215,-253.3929 276.4323,-151.9827 307.0585,-107.3667" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="308.9402,-108.3384 310.6345,-102.2114 305.4891,-105.9445 308.9402,-108.3384" />
+</g>
+
+<g id="node10" class="node" data-stage="other">
+<title>build_clonotypes</title>
+<g id="a_node10"><a xlink:title="build_clonotypes">
+<path fill="#ffedd5" stroke="#9aabb8" d="M651,-502C651,-502 561,-502 561,-502 555,-502 549,-496 549,-490 549,-490 549,-478 549,-478 549,-472 555,-466 561,-466 561,-466 651,-466 651,-466 657,-466 663,-472 663,-478 663,-478 663,-490 663,-490 663,-496 657,-502 651,-502" />
+<text text-anchor="middle" x="606" y="-481.2" font-family="sans-serif" font-size="11.00" fill="#243746">build clonotypes</text>
+</a>
+</g>
+</g>
+
+<g id="edge7" class="edge">
+<title>17-&gt;37</title>
+<path fill="none" stroke="#8e9eac" d="M593.157,-465.692C587.6651,-457.863 581.188,-448.6297 575.3587,-440.3198" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="576.9923,-438.9919 571.8274,-435.2859 573.554,-441.4039 576.9923,-438.9919" />
+</g>
+
+<g id="node11" class="node" data-stage="summaries">
+<title>calculate_library_clonotype_diversity</title>
+<g id="a_node11"><a xlink:title="calculate_library_clonotype_diversity">
+<path fill="#ede9fe" stroke="#9aabb8" d="M913.5,-436C913.5,-436 808.5,-436 808.5,-436 802.5,-436 796.5,-430 796.5,-424 796.5,-424 796.5,-410 796.5,-410 796.5,-404 802.5,-398 808.5,-398 808.5,-398 913.5,-398 913.5,-398 919.5,-398 925.5,-404 925.5,-410 925.5,-410 925.5,-424 925.5,-424 925.5,-430 919.5,-436 913.5,-436" />
+<text text-anchor="middle" x="861" y="-420.2" font-family="sans-serif" font-size="11.00" fill="#243746">calculate library</text>
+<text text-anchor="middle" x="861" y="-408.2" font-family="sans-serif" font-size="11.00" fill="#243746">clonotype diversity</text>
+</a>
+</g>
+</g>
+
+<g id="edge8" class="edge">
+<title>17-&gt;29</title>
+<path fill="none" stroke="#8e9eac" d="M663.2231,-468.3364C666.1903,-467.5421 669.1295,-466.7594 672,-466 723.8968,-452.2706 737.047,-449.5154 789,-436 789.4457,-435.884 789.893,-435.7676 790.3416,-435.6508" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="790.9675,-437.6579 796.2432,-434.1115 789.9074,-433.5939 790.9675,-437.6579" />
+</g>
+
+<g id="node12" class="node" data-stage="summaries">
+<title>collect_scope_library_metric</title>
+<g id="a_node12"><a xlink:title="collect_scope_library_metric">
+<path fill="#ede9fe" stroke="#9aabb8" d="M1571.5,-436C1571.5,-436 1462.5,-436 1462.5,-436 1456.5,-436 1450.5,-430 1450.5,-424 1450.5,-424 1450.5,-410 1450.5,-410 1450.5,-404 1456.5,-398 1462.5,-398 1462.5,-398 1571.5,-398 1571.5,-398 1577.5,-398 1583.5,-404 1583.5,-410 1583.5,-410 1583.5,-424 1583.5,-424 1583.5,-430 1577.5,-436 1571.5,-436" />
+<text text-anchor="middle" x="1517" y="-420.2" font-family="sans-serif" font-size="11.00" fill="#243746">collect scope library</text>
+<text text-anchor="middle" x="1517" y="-408.2" font-family="sans-serif" font-size="11.00" fill="#243746">metric</text>
+</a>
+</g>
+</g>
+
+<g id="edge9" class="edge">
+<title>17-&gt;3</title>
+<path fill="none" stroke="#8e9eac" d="M663.0725,-467.6243C666.079,-467.016 669.0679,-466.4679 672,-466 934.3493,-424.1384 1003.8646,-452.8152 1269,-436 1327.9951,-432.2585 1394.8119,-427.0854 1444.2152,-423.0816" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1444.6464,-425.1536 1450.4566,-422.5745 1444.3062,-420.9674 1444.6464,-425.1536" />
+</g>
+
+<g id="node13" class="node" data-stage="airr">
+<title>export_library_airr</title>
+<g id="a_node13"><a xlink:title="export_library_airr">
+<path fill="#ccfbf1" stroke="#9aabb8" d="M454,-435C454,-435 358,-435 358,-435 352,-435 346,-429 346,-423 346,-423 346,-411 346,-411 346,-405 352,-399 358,-399 358,-399 454,-399 454,-399 460,-399 466,-405 466,-411 466,-411 466,-423 466,-423 466,-429 460,-435 454,-435" />
+<text text-anchor="middle" x="406" y="-414.2" font-family="sans-serif" font-size="11.00" fill="#243746">export library airr</text>
+</a>
+</g>
+</g>
+
+<g id="edge10" class="edge">
+<title>17-&gt;13</title>
+<path fill="none" stroke="#8e9eac" d="M552.1406,-465.9571C525.4611,-457.0195 493.1694,-446.2018 465.7328,-437.0105" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="466.3119,-434.9899 459.9556,-435.0751 464.9778,-438.9723 466.3119,-434.9899" />
+</g>
+
+<g id="edge27" class="edge">
+<title>29-&gt;28</title>
+<path fill="none" stroke="#8e9eac" d="M925.7687,-399.6172C928.5426,-399.039 931.295,-398.4963 934,-398 1055.3636,-375.734 1088.3757,-388.7946 1210,-368 1210.4805,-367.9178 1210.9624,-367.8346 1211.4457,-367.7502" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1212.2633,-369.7359 1217.7902,-366.5953 1211.5111,-365.6038 1212.2633,-369.7359" />
+</g>
+
+<g id="edge28" class="edge">
+<title>29-&gt;32</title>
+<path fill="none" stroke="#8e9eac" d="M925.6885,-400.0161C961.9555,-390.4943 1007.3598,-378.5735 1045.1564,-368.65" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1045.8847,-370.6301 1051.1547,-367.0752 1044.8181,-366.5678 1045.8847,-370.6301" />
+</g>
+
+<g id="edge29" class="edge">
+<title>29-&gt;35</title>
+<path fill="none" stroke="#8e9eac" d="M838.5731,-397.6958C829.3214,-389.7323 818.5224,-380.437 808.8536,-372.1145" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="810.127,-370.4397 804.2096,-368.1171 807.387,-373.6229 810.127,-370.4397" />
+</g>
+
+<g id="edge30" class="edge">
+<title>29-&gt;34</title>
+<path fill="none" stroke="#8e9eac" d="M884.2786,-397.6958C893.8816,-389.7323 905.0907,-380.437 915.1267,-372.1145" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="916.669,-373.5636 919.947,-368.1171 913.988,-370.3306 916.669,-373.5636" />
+</g>
+
+<g id="edge31" class="edge">
+<title>29-&gt;33</title>
+<path fill="none" stroke="#8e9eac" d="M797.466,-397.9678C768.2006,-389.2011 733.398,-378.7756 703.4421,-369.802" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="703.869,-367.7378 697.5187,-368.0276 702.6637,-371.7611 703.869,-367.7378" />
+</g>
+
+<g id="node17" class="node" data-stage="summaries">
+<title>build_scope_headline</title>
+<g id="a_node17"><a xlink:title="build_scope_headline">
+<path fill="#ede9fe" stroke="#9aabb8" d="M1429,-234C1429,-234 1315,-234 1315,-234 1309,-234 1303,-228 1303,-222 1303,-222 1303,-210 1303,-210 1303,-204 1309,-198 1315,-198 1315,-198 1429,-198 1429,-198 1435,-198 1441,-204 1441,-210 1441,-210 1441,-222 1441,-222 1441,-228 1435,-234 1429,-234" />
+<text text-anchor="middle" x="1372" y="-213.2" font-family="sans-serif" font-size="11.00" fill="#243746">build scope headline</text>
+</a>
+</g>
+</g>
+
+<g id="edge42" class="edge">
+<title>3-&gt;38</title>
+<path fill="none" stroke="#8e9eac" d="M1534.359,-397.7835C1548.4062,-379.7789 1564.0359,-352.3648 1552,-330 1527.171,-283.8637 1474.7149,-253.8823 1432.8036,-236.3027" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1433.5735,-234.3487 1427.2256,-234.0095 1431.9764,-238.2333 1433.5735,-234.3487" />
+</g>
+
+<g id="edge49" class="edge">
+<title>13-&gt;46</title>
+<path fill="none" stroke="#8e9eac" d="M379.4644,-398.9558C366.694,-390.2719 351.2826,-379.7921 337.8799,-370.6783" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="338.8021,-368.7659 332.6596,-367.1285 336.4403,-372.239 338.8021,-368.7659" />
+</g>
+
+<g id="edge50" class="edge">
+<title>13-&gt;42</title>
+<path fill="none" stroke="#8e9eac" d="M345.8515,-402.9928C302.4633,-392.8887 243.3864,-379.1311 195.7262,-368.0321" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="195.9957,-365.9388 189.6757,-366.6231 195.0431,-370.0293 195.9957,-365.9388" />
+</g>
+
+<g id="edge51" class="edge">
+<title>13-&gt;12</title>
+<path fill="none" stroke="#8e9eac" d="M427.7065,-398.7772C437.4596,-390.5895 449.081,-380.8332 459.4403,-372.1365" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="460.8548,-373.691 464.0999,-368.2247 458.1543,-370.4742 460.8548,-373.691" />
+</g>
+
+<g id="node14" class="node" data-stage="igh">
+<title>build_igh_consensus_votes</title>
+<g id="a_node14"><a xlink:title="build_igh_consensus_votes">
+<path fill="#fce7f3" stroke="#9aabb8" d="M821.5,-636C821.5,-636 676.5,-636 676.5,-636 670.5,-636 664.5,-630 664.5,-624 664.5,-624 664.5,-612 664.5,-612 664.5,-606 670.5,-600 676.5,-600 676.5,-600 821.5,-600 821.5,-600 827.5,-600 833.5,-606 833.5,-612 833.5,-612 833.5,-624 833.5,-624 833.5,-630 827.5,-636 821.5,-636" />
+<text text-anchor="middle" x="749" y="-615.2" font-family="sans-serif" font-size="11.00" fill="#243746">build igh consensus votes</text>
+</a>
+</g>
+</g>
+
+<g id="node15" class="node" data-stage="igh">
+<title>calculate_igh_features</title>
+<g id="a_node15"><a xlink:title="calculate_igh_features">
+<path fill="#fce7f3" stroke="#9aabb8" d="M810.5,-502C810.5,-502 691.5,-502 691.5,-502 685.5,-502 679.5,-496 679.5,-490 679.5,-490 679.5,-478 679.5,-478 679.5,-472 685.5,-466 691.5,-466 691.5,-466 810.5,-466 810.5,-466 816.5,-466 822.5,-472 822.5,-478 822.5,-478 822.5,-490 822.5,-490 822.5,-496 816.5,-502 810.5,-502" />
+<text text-anchor="middle" x="751" y="-481.2" font-family="sans-serif" font-size="11.00" fill="#243746">calculate igh features</text>
+</a>
+</g>
+</g>
+
+<g id="edge11" class="edge">
+<title>22-&gt;21</title>
+<path fill="none" stroke="#8e9eac" d="M749.2697,-599.9282C749.6231,-576.2515 750.244,-534.6506 750.638,-508.2523" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="752.7383,-508.2442 750.7282,-502.2135 748.5388,-508.1814 752.7383,-508.2442" />
+</g>
+
+<g id="edge24" class="edge">
+<title>21-&gt;19</title>
+<path fill="none" stroke="#8e9eac" d="M741.4361,-465.692C737.5551,-458.2626 733.0134,-449.5685 728.8502,-441.599" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="730.6808,-440.5677 726.0413,-436.2219 726.9581,-442.5124 730.6808,-440.5677" />
+</g>
+
+<g id="node16" class="node" data-stage="support">
+<title>build_scope_assignment</title>
+<g id="a_node16"><a xlink:title="build_scope_assignment">
+<path fill="#eef1f5" stroke="#9aabb8" d="M144,-102C144,-102 12,-102 12,-102 6,-102 0,-96 0,-90 0,-90 0,-78 0,-78 0,-72 6,-66 12,-66 12,-66 144,-66 144,-66 150,-66 156,-72 156,-78 156,-78 156,-90 156,-90 156,-96 150,-102 144,-102" />
+<text text-anchor="middle" x="78" y="-81.2" font-family="sans-serif" font-size="11.00" fill="#243746">build scope assignment</text>
+</a>
+</g>
+</g>
+
+<g id="edge12" class="edge">
+<title>45-&gt;1</title>
+<path fill="none" stroke="#8e9eac" d="M120.0812,-65.9652C139.9434,-57.4528 163.7384,-47.255 184.271,-38.4553" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="185.2821,-40.3068 189.9697,-36.013 183.6276,-36.4464 185.2821,-40.3068" />
+</g>
+
+<g id="node18" class="node" data-stage="release">
+<title>prepare_scope_report</title>
+<g id="a_node18"><a xlink:title="prepare_scope_report">
+<path fill="#dcfce7" stroke="#9aabb8" d="M919,-168C919,-168 803,-168 803,-168 797,-168 791,-162 791,-156 791,-156 791,-144 791,-144 791,-138 797,-132 803,-132 803,-132 919,-132 919,-132 925,-132 931,-138 931,-144 931,-144 931,-156 931,-156 931,-162 925,-168 919,-168" />
+<text text-anchor="middle" x="861" y="-147.2" font-family="sans-serif" font-size="11.00" fill="#243746">prepare scope report</text>
+</a>
+</g>
+</g>
+
+<g id="edge13" class="edge">
+<title>38-&gt;44</title>
+<path fill="none" stroke="#8e9eac" d="M1302.8186,-207.0646C1207.4769,-194.7504 1036.2824,-172.6392 937.3163,-159.8569" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="937.4161,-157.7524 931.1965,-159.0665 936.878,-161.9178 937.4161,-157.7524" />
+</g>
+
+<g id="edge67" class="edge">
+<title>44-&gt;43</title>
+<path fill="none" stroke="#8e9eac" d="M790.7966,-141.3717C688.7761,-128.8328 500.4572,-105.6875 396.9259,-92.963" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="397.0525,-90.8628 390.8411,-92.2151 396.5401,-95.0314 397.0525,-90.8628" />
+</g>
+
+<g id="node19" class="node" data-stage="support">
+<title>build_scope_manifest</title>
+<g id="a_node19"><a xlink:title="build_scope_manifest">
+<path fill="#eef1f5" stroke="#9aabb8" d="M938.5,-768C938.5,-768 823.5,-768 823.5,-768 817.5,-768 811.5,-762 811.5,-756 811.5,-756 811.5,-744 811.5,-744 811.5,-738 817.5,-732 823.5,-732 823.5,-732 938.5,-732 938.5,-732 944.5,-732 950.5,-738 950.5,-744 950.5,-744 950.5,-756 950.5,-756 950.5,-762 944.5,-768 938.5,-768" />
+<text text-anchor="middle" x="881" y="-747.2" font-family="sans-serif" font-size="11.00" fill="#243746">build scope manifest</text>
+</a>
+</g>
+</g>
+
+<g id="edge14" class="edge">
+<title>2-&gt;39</title>
+<path fill="none" stroke="#8e9eac" d="M811.4303,-741.3038C715.0598,-729.2575 541.1249,-707.5156 437.4362,-694.5545" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="437.5387,-692.4511 431.3245,-693.7906 437.0177,-696.6186 437.5387,-692.4511" />
+</g>
+
+<g id="edge15" class="edge">
+<title>2-&gt;3</title>
+<path fill="none" stroke="#8e9eac" d="M915.6458,-731.86C1024.0915,-675.0794 1356.8171,-500.8694 1474.8952,-439.0454" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1476.0126,-440.8309 1480.354,-436.1873 1474.0644,-437.11 1476.0126,-440.8309" />
+</g>
+
+<g id="node20" class="node" data-stage="igh">
+<title>pool_scope_donor_igh</title>
+<g id="a_node20"><a xlink:title="pool_scope_donor_igh">
+<path fill="#fce7f3" stroke="#9aabb8" d="M939,-702C939,-702 823,-702 823,-702 817,-702 811,-696 811,-690 811,-690 811,-678 811,-678 811,-672 817,-666 823,-666 823,-666 939,-666 939,-666 945,-666 951,-672 951,-678 951,-678 951,-690 951,-690 951,-696 945,-702 939,-702" />
+<text text-anchor="middle" x="881" y="-681.2" font-family="sans-serif" font-size="11.00" fill="#243746">pool scope donor igh</text>
+</a>
+</g>
+</g>
+
+<g id="edge16" class="edge">
+<title>2-&gt;20</title>
+<path fill="none" stroke="#8e9eac" d="M881,-731.9652C881,-724.6897 881,-716.1829 881,-708.3701" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="883.1001,-708.013 881,-702.013 878.9001,-708.013 883.1001,-708.013" />
+</g>
+
+<g id="node39" class="node" data-stage="igh">
+<title>fit_donor_threshold</title>
+<g id="a_node39"><a xlink:title="fit_donor_threshold">
+<path fill="#fce7f3" stroke="#9aabb8" d="M968,-636C968,-636 866,-636 866,-636 860,-636 854,-630 854,-624 854,-624 854,-612 854,-612 854,-606 860,-600 866,-600 866,-600 968,-600 968,-600 974,-600 980,-606 980,-612 980,-612 980,-624 980,-624 980,-630 974,-636 968,-636" />
+<text text-anchor="middle" x="917" y="-615.2" font-family="sans-serif" font-size="11.00" fill="#243746">fit donor threshold</text>
+</a>
+</g>
+</g>
+
+<g id="edge64" class="edge">
+<title>20-&gt;25</title>
+<path fill="none" stroke="#8e9eac" d="M890.8372,-665.9652C894.9644,-658.3986 899.818,-649.5004 904.2167,-641.4361" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="906.1452,-642.286 907.1747,-636.013 902.458,-640.2748 906.1452,-642.286" />
+</g>
+
+<g id="edge19" class="edge">
+<title>42-&gt;1</title>
+<path fill="none" stroke="#8e9eac" d="M130.2188,-330.6515C150.0477,-306.2625 181,-260.9871 181,-216 181,-216 181,-216 181,-150 181,-109.8616 201.7722,-67.1925 216.803,-41.5711" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="218.6364,-42.5968 219.9137,-36.3696 215.0318,-40.4411 218.6364,-42.5968" />
+</g>
+
+<g id="edge73" class="edge">
+<title>43-&gt;1</title>
+<path fill="none" stroke="#8e9eac" d="M298.8606,-65.9652C287.5019,-57.8166 273.9903,-48.1235 262.0964,-39.5909" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="263.2084,-37.8041 257.109,-36.013 260.7601,-41.2168 263.2084,-37.8041" />
+</g>
+
+<g id="node27" class="node" data-stage="summaries">
+<title>collect_scope_qc_audit</title>
+<g id="a_node27"><a xlink:title="collect_scope_qc_audit">
+<path fill="#ede9fe" stroke="#9aabb8" d="M1432,-300C1432,-300 1312,-300 1312,-300 1306,-300 1300,-294 1300,-288 1300,-288 1300,-276 1300,-276 1300,-270 1306,-264 1312,-264 1312,-264 1432,-264 1432,-264 1438,-264 1444,-270 1444,-276 1444,-276 1444,-288 1444,-288 1444,-294 1438,-300 1432,-300" />
+<text text-anchor="middle" x="1372" y="-279.2" font-family="sans-serif" font-size="11.00" fill="#243746">collect scope qc audit</text>
+</a>
+</g>
+</g>
+
+<g id="edge39" class="edge">
+<title>12-&gt;11</title>
+<path fill="none" stroke="#8e9eac" d="M552.1372,-331.3728C554.7846,-330.8702 557.413,-330.4091 560,-330 699.8321,-307.8879 1118.7075,-290.9691 1293.7644,-284.6722" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1293.9671,-286.7664 1299.888,-284.4527 1293.8166,-282.5691 1293.9671,-286.7664" />
+</g>
+
+<g id="edge43" class="edge">
+<title>36-&gt;44</title>
+<path fill="none" stroke="#8e9eac" d="M482.9836,-263.9227C564.6653,-239.3063 710.3789,-195.3927 795.0505,-169.8752" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="795.9008,-171.8123 801.0396,-168.0703 794.6888,-167.791 795.9008,-171.8123" />
+</g>
+
+<g id="edge46" class="edge">
+<title>31-&gt;11</title>
+<path fill="none" stroke="#8e9eac" d="M1431.5931,-330.692C1421.4773,-322.4265 1409.4456,-312.5958 1398.8506,-303.9389" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1400.0709,-302.2241 1394.0959,-300.0539 1397.4134,-305.4765 1400.0709,-302.2241" />
+</g>
+
+<g id="node26" class="node" data-stage="igh">
+<title>calculate_isotype</title>
+<g id="a_node26"><a xlink:title="calculate_isotype">
+<path fill="#fce7f3" stroke="#9aabb8" d="M1273,-502C1273,-502 1181,-502 1181,-502 1175,-502 1169,-496 1169,-490 1169,-490 1169,-478 1169,-478 1169,-472 1175,-466 1181,-466 1181,-466 1273,-466 1273,-466 1279,-466 1285,-472 1285,-478 1285,-478 1285,-490 1285,-490 1285,-496 1279,-502 1273,-502" />
+<text text-anchor="middle" x="1227" y="-481.2" font-family="sans-serif" font-size="11.00" fill="#243746">calculate isotype</text>
+</a>
+</g>
+</g>
+
+<g id="edge25" class="edge">
+<title>26-&gt;3</title>
+<path fill="none" stroke="#8e9eac" d="M1285.0136,-468.882C1289.0654,-467.8878 1293.0909,-466.918 1297,-466 1359.3725,-451.3521 1375.5147,-450.1588 1438,-436 1439.9949,-435.548 1442.0172,-435.0862 1444.0574,-434.6172" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1444.8502,-436.5894 1450.2226,-433.1913 1443.9037,-432.4974 1444.8502,-436.5894" />
+</g>
+
+<g id="edge26" class="edge">
+<title>26-&gt;11</title>
+<path fill="none" stroke="#8e9eac" d="M1270.1156,-465.8462C1313.4836,-447.8205 1382.4249,-419.8016 1443,-398 1483.8645,-383.2925 1510.4349,-403.1091 1536,-368 1545.9415,-354.3471 1546.127,-343.5159 1536,-330 1525.0666,-315.4079 1486.8205,-303.7621 1450.012,-295.5976" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1450.4304,-293.5396 1444.1212,-294.3172 1449.5383,-297.6438 1450.4304,-293.5396" />
+</g>
+
+<g id="edge44" class="edge">
+<title>11-&gt;38</title>
+<path fill="none" stroke="#8e9eac" d="M1372,-263.9652C1372,-256.6897 1372,-248.1829 1372,-240.3701" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1374.1001,-240.013 1372,-234.013 1369.9001,-240.013 1374.1001,-240.013" />
+</g>
+
+<g id="edge38" class="edge">
+<title>28-&gt;11</title>
+<path fill="none" stroke="#8e9eac" d="M1313.1336,-330.692C1323.1261,-322.4265 1335.0111,-312.5958 1345.4768,-303.9389" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1346.8887,-305.4964 1350.1736,-300.0539 1344.2118,-302.26 1346.8887,-305.4964" />
+</g>
+
+<g id="edge40" class="edge">
+<title>32-&gt;44</title>
+<path fill="none" stroke="#8e9eac" d="M1096.5587,-330.9891C1048.9096,-294.3784 940.908,-211.3965 889.3812,-171.8064" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="890.6122,-170.104 884.575,-168.1136 888.0533,-173.4345 890.6122,-170.104" />
+</g>
+
+<g id="edge41" class="edge">
+<title>35-&gt;44</title>
+<path fill="none" stroke="#8e9eac" d="M789.5749,-329.919C804.0776,-293.3868 835.7301,-213.6547 851.5731,-173.7463" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="853.5298,-174.5086 853.7919,-168.1571 849.6262,-172.9588 853.5298,-174.5086" />
+</g>
+
+<g id="edge45" class="edge">
+<title>34-&gt;44</title>
+<path fill="none" stroke="#8e9eac" d="M935.1375,-329.919C920.084,-293.3868 887.2296,-213.6547 870.7849,-173.7463" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="872.7094,-172.9045 868.4818,-168.1571 868.8261,-174.5047 872.7094,-172.9045" />
+</g>
+
+<g id="edge47" class="edge">
+<title>33-&gt;1</title>
+<path fill="none" stroke="#8e9eac" d="M623.1068,-329.8596C609.7889,-304.6145 589,-258.4145 589,-216 589,-216 589,-216 589,-150 589,-92.1177 421.8151,-51.6401 316.264,-31.8528" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="316.6279,-29.7845 310.3452,-30.7527 315.8604,-33.9138 316.6279,-29.7845" />
+</g>
+
+<g id="node33" class="node" data-stage="support">
+<title>capture_tool_versions</title>
+<g id="a_node33"><a xlink:title="capture_tool_versions">
+<path fill="#eef1f5" stroke="#9aabb8" d="M379,-966C379,-966 263,-966 263,-966 257,-966 251,-960 251,-954 251,-954 251,-942 251,-942 251,-936 257,-930 263,-930 263,-930 379,-930 379,-930 385,-930 391,-936 391,-942 391,-942 391,-954 391,-954 391,-960 385,-966 379,-966" />
+<text text-anchor="middle" x="321" y="-945.2" font-family="sans-serif" font-size="11.00" fill="#243746">capture tool versions</text>
+</a>
+</g>
+</g>
+
+<g id="edge37" class="edge">
+<title>40-&gt;39</title>
+<path fill="none" stroke="#8e9eac" d="M322.9367,-929.9779C325.9885,-901.8004 332.1709,-845.6058 338,-798 341.7922,-767.0294 346.5455,-731.3799 349.6726,-708.3106" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="351.7823,-708.3799 350.5093,-702.1518 347.6206,-707.8144 351.7823,-708.3799" />
+</g>
+
+<g id="node34" class="node" data-stage="support">
+<title>count_sequencing_depth</title>
+<g id="a_node34"><a xlink:title="count_sequencing_depth">
+<path fill="#eef1f5" stroke="#9aabb8" d="M1069,-1032C1069,-1032 933,-1032 933,-1032 927,-1032 921,-1026 921,-1020 921,-1020 921,-1008 921,-1008 921,-1002 927,-996 933,-996 933,-996 1069,-996 1069,-996 1075,-996 1081,-1002 1081,-1008 1081,-1008 1081,-1020 1081,-1020 1081,-1026 1075,-1032 1069,-1032" />
+<text text-anchor="middle" x="1001" y="-1011.2" font-family="sans-serif" font-size="11.00" fill="#243746">count sequencing depth</text>
+</a>
+</g>
+</g>
+
+<g id="node35" class="node" data-stage="support">
+<title>normalise_input_depth</title>
+<g id="a_node35"><a xlink:title="normalise_input_depth">
+<path fill="#eef1f5" stroke="#9aabb8" d="M1062.5,-966C1062.5,-966 939.5,-966 939.5,-966 933.5,-966 927.5,-960 927.5,-954 927.5,-954 927.5,-942 927.5,-942 927.5,-936 933.5,-930 939.5,-930 939.5,-930 1062.5,-930 1062.5,-930 1068.5,-930 1074.5,-936 1074.5,-942 1074.5,-942 1074.5,-954 1074.5,-954 1074.5,-960 1068.5,-966 1062.5,-966" />
+<text text-anchor="middle" x="1001" y="-945.2" font-family="sans-serif" font-size="11.00" fill="#243746">normalise input depth</text>
+</a>
+</g>
+</g>
+
+<g id="edge48" class="edge">
+<title>6-&gt;5</title>
+<path fill="none" stroke="#8e9eac" d="M1001,-995.9652C1001,-988.6897 1001,-980.1829 1001,-972.3701" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1003.1001,-972.013 1001,-966.013 998.9001,-972.013 1003.1001,-972.013" />
+</g>
+
+<g id="node41" class="node" data-stage="summaries">
+<title>summarise_library_yield</title>
+<g id="a_node41"><a xlink:title="summarise_library_yield">
+<path fill="#ede9fe" stroke="#9aabb8" d="M1066,-900C1066,-900 936,-900 936,-900 930,-900 924,-894 924,-888 924,-888 924,-876 924,-876 924,-870 930,-864 936,-864 936,-864 1066,-864 1066,-864 1072,-864 1078,-870 1078,-876 1078,-876 1078,-888 1078,-888 1078,-894 1072,-900 1066,-900" />
+<text text-anchor="middle" x="1001" y="-879.2" font-family="sans-serif" font-size="11.00" fill="#243746">summarise library yield</text>
+</a>
+</g>
+</g>
+
+<g id="edge57" class="edge">
+<title>5-&gt;4</title>
+<path fill="none" stroke="#8e9eac" d="M1001,-929.9652C1001,-922.6897 1001,-914.1829 1001,-906.3701" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1003.1001,-906.013 1001,-900.013 998.9001,-906.013 1003.1001,-906.013" />
+</g>
+
+<g id="node36" class="node" data-stage="annotation">
+<title>filter_airr</title>
+<g id="a_node36"><a xlink:title="filter_airr">
+<path fill="#fef3c7" stroke="#9aabb8" d="M670.5,-834C670.5,-834 625.5,-834 625.5,-834 619.5,-834 613.5,-828 613.5,-822 613.5,-822 613.5,-810 613.5,-810 613.5,-804 619.5,-798 625.5,-798 625.5,-798 670.5,-798 670.5,-798 676.5,-798 682.5,-804 682.5,-810 682.5,-810 682.5,-822 682.5,-822 682.5,-828 676.5,-834 670.5,-834" />
+<text text-anchor="middle" x="648" y="-813.2" font-family="sans-serif" font-size="11.00" fill="#243746">filter airr</text>
+</a>
+</g>
+</g>
+
+<g id="edge52" class="edge">
+<title>14-&gt;17</title>
+<path fill="none" stroke="#8e9eac" d="M613.2352,-801.8044C597.7445,-793.9097 580.4505,-782.6782 569,-768 544.9621,-737.1863 543,-723.0808 543,-684 543,-684 543,-684 543,-618 543,-575.8248 568.8749,-532.6716 587.4599,-507.1159" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="589.1845,-508.3157 591.0699,-502.2448 585.8101,-505.815 589.1845,-508.3157" />
+</g>
+
+<g id="edge53" class="edge">
+<title>14-&gt;22</title>
+<path fill="none" stroke="#8e9eac" d="M682.5955,-803.1507C698.6387,-795.4108 716.4508,-783.9196 727,-768 752.3521,-729.7415 753.3742,-674.0075 751.4486,-642.3556" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="753.5429,-642.1981 751.0306,-636.3587 749.353,-642.4902 753.5429,-642.1981" />
+</g>
+
+<g id="node37" class="node" data-stage="igh">
+<title>prepare_igh_grouping</title>
+<g id="a_node37"><a xlink:title="prepare_igh_grouping">
+<path fill="#fce7f3" stroke="#9aabb8" d="M707,-768C707,-768 589,-768 589,-768 583,-768 577,-762 577,-756 577,-756 577,-744 577,-744 577,-738 583,-732 589,-732 589,-732 707,-732 707,-732 713,-732 719,-738 719,-744 719,-744 719,-756 719,-756 719,-762 713,-768 707,-768" />
+<text text-anchor="middle" x="648" y="-747.2" font-family="sans-serif" font-size="11.00" fill="#243746">prepare igh grouping</text>
+</a>
+</g>
+</g>
+
+<g id="edge54" class="edge">
+<title>14-&gt;16</title>
+<path fill="none" stroke="#8e9eac" d="M648,-797.9652C648,-790.6897 648,-782.1829 648,-774.3701" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="650.1001,-774.013 648,-768.013 645.9001,-774.013 650.1001,-774.013" />
+</g>
+
+<g id="node38" class="node" data-stage="igh">
+<title>qualify_isotype_calls</title>
+<g id="a_node38"><a xlink:title="qualify_isotype_calls">
+<path fill="#fce7f3" stroke="#9aabb8" d="M1198,-569C1198,-569 1090,-569 1090,-569 1084,-569 1078,-563 1078,-557 1078,-557 1078,-545 1078,-545 1078,-539 1084,-533 1090,-533 1090,-533 1198,-533 1198,-533 1204,-533 1210,-539 1210,-545 1210,-545 1210,-557 1210,-557 1210,-563 1204,-569 1198,-569" />
+<text text-anchor="middle" x="1144" y="-548.2" font-family="sans-serif" font-size="11.00" fill="#243746">qualify isotype calls</text>
+</a>
+</g>
+</g>
+
+<g id="edge55" class="edge">
+<title>14-&gt;18</title>
+<path fill="none" stroke="#8e9eac" d="M682.7245,-813.6852C753.5753,-808.4752 912.068,-794.1891 959,-768 1043.1229,-721.0574 1106.2482,-620.1008 1131.6928,-574.3665" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1133.5544,-575.3393 1134.6079,-569.0702 1129.8749,-573.314 1133.5544,-575.3393" />
+</g>
+
+<g id="edge65" class="edge">
+<title>16-&gt;13</title>
+<path fill="none" stroke="#8e9eac" d="M634.6443,-731.6221C593.491,-674.9938 468.6522,-503.2115 422.9754,-440.3587" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="424.5405,-438.9402 419.3144,-435.3211 421.1429,-441.4093 424.5405,-438.9402" />
+</g>
+
+<g id="edge66" class="edge">
+<title>16-&gt;20</title>
+<path fill="none" stroke="#8e9eac" d="M711.6683,-731.9652C742.6185,-723.1982 779.8804,-712.6433 811.561,-703.6694" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="812.2082,-705.6688 817.4087,-702.013 811.0635,-701.6278 812.2082,-705.6688" />
+</g>
+
+<g id="edge68" class="edge">
+<title>18-&gt;27</title>
+<path fill="none" stroke="#8e9eac" d="M1146.6941,-532.8731C1149.4918,-515.5136 1154.3876,-488.6831 1161,-466 1163.4011,-457.7633 1166.6017,-448.9666 1169.6905,-441.1325" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1171.7239,-441.7047 1172.0157,-435.3545 1167.8275,-440.1367 1171.7239,-441.7047" />
+</g>
+
+<g id="edge71" class="edge">
+<title>18-&gt;13</title>
+<path fill="none" stroke="#8e9eac" d="M1077.6381,-541.7263C1051.5991,-538.315 1021.4352,-534.6436 994,-532 893.578,-522.3235 633.4349,-542.4229 541,-502 519.6846,-492.6785 522.0277,-479.3859 503,-466 487.8884,-455.369 470.1439,-445.7011 453.9921,-437.8152" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="454.8987,-435.921 448.5817,-435.2103 453.0767,-439.7053 454.8987,-435.921" />
+</g>
+
+<g id="edge69" class="edge">
+<title>18-&gt;21</title>
+<path fill="none" stroke="#8e9eac" d="M1077.8335,-541.936C1014.332,-532.9319 915.8269,-518.1646 831,-502 830.3357,-501.8734 829.6686,-501.7453 828.9989,-501.6159" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="829.2045,-499.516 822.9116,-500.4154 828.3918,-503.6367 829.2045,-499.516" />
+</g>
+
+<g id="edge70" class="edge">
+<title>18-&gt;26</title>
+<path fill="none" stroke="#8e9eac" d="M1166.6801,-532.692C1176.9194,-524.4265 1189.0978,-514.5958 1199.8219,-505.9389" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1201.285,-507.4567 1204.6347,-502.0539 1198.6469,-504.1886 1201.285,-507.4567" />
+</g>
+
+<g id="node40" class="node" data-stage="igh">
+<title>resolve_scope_clone_threshold</title>
+<g id="a_node40"><a xlink:title="resolve_scope_clone_threshold">
+<path fill="#fce7f3" stroke="#9aabb8" d="M974,-570C974,-570 866,-570 866,-570 860,-570 854,-564 854,-558 854,-558 854,-544 854,-544 854,-538 860,-532 866,-532 866,-532 974,-532 974,-532 980,-532 986,-538 986,-544 986,-544 986,-558 986,-558 986,-564 980,-570 974,-570" />
+<text text-anchor="middle" x="920" y="-554.2" font-family="sans-serif" font-size="11.00" fill="#243746">resolve scope clone</text>
+<text text-anchor="middle" x="920" y="-542.2" font-family="sans-serif" font-size="11.00" fill="#243746">threshold</text>
+</a>
+</g>
+</g>
+
+<g id="edge56" class="edge">
+<title>25-&gt;24</title>
+<path fill="none" stroke="#8e9eac" d="M917.8198,-599.692C918.1396,-592.5483 918.5118,-584.2354 918.8572,-576.5217" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="920.9687,-576.3099 919.1393,-570.2219 916.7729,-576.122 920.9687,-576.3099" />
+</g>
+
+<g id="edge74" class="edge">
+<title>24-&gt;23</title>
+<path fill="none" stroke="#8e9eac" d="M921.1355,-531.9797C921.5686,-524.7257 922.0686,-516.3502 922.5285,-508.6473" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="924.6416,-508.489 922.903,-502.3745 920.4491,-508.2387 924.6416,-508.489" />
+</g>
+
+<g id="edge78" class="edge">
+<title>4-&gt;3</title>
+<path fill="none" stroke="#8e9eac" d="M1078.1859,-875.2802C1206.5616,-861.9507 1450,-826.5783 1450,-750 1450,-750 1450,-750 1450,-551 1450,-509.0592 1476.5824,-466.7891 1496.2596,-441.2447" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="1498.0385,-442.3797 1500.0931,-436.3639 1494.7355,-439.7854 1498.0385,-442.3797" />
+</g>
+
+<g id="node42" class="node" data-stage="support">
+<title>obtain_analysis_image</title>
+<g id="a_node42"><a xlink:title="obtain_analysis_image">
+<path fill="#eef1f5" stroke="#9aabb8" d="M513.5,-1099C513.5,-1099 392.5,-1099 392.5,-1099 386.5,-1099 380.5,-1093 380.5,-1087 380.5,-1087 380.5,-1075 380.5,-1075 380.5,-1069 386.5,-1063 392.5,-1063 392.5,-1063 513.5,-1063 513.5,-1063 519.5,-1063 525.5,-1069 525.5,-1075 525.5,-1075 525.5,-1087 525.5,-1087 525.5,-1093 519.5,-1099 513.5,-1099" />
+<text text-anchor="middle" x="453" y="-1078.2" font-family="sans-serif" font-size="11.00" fill="#243746">obtain analysis image</text>
+</a>
+</g>
+</g>
+
+<g id="edge58" class="edge">
+<title>10-&gt;40</title>
+<path fill="none" stroke="#8e9eac" d="M380.3951,-1063.0535C364.0242,-1055.8587 348.1989,-1045.8581 337,-1032 323.5372,-1015.3405 320.1673,-990.7775 319.79,-972.5116" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="321.889,-972.0877 319.7733,-966.0932 317.689,-972.0987 321.889,-972.0877" />
+</g>
+
+<g id="node43" class="node" data-stage="support">
+<title>obtain_imgt_reference</title>
+<g id="a_node43"><a xlink:title="obtain_imgt_reference">
+<path fill="#eef1f5" stroke="#9aabb8" d="M647,-1032C647,-1032 527,-1032 527,-1032 521,-1032 515,-1026 515,-1020 515,-1020 515,-1008 515,-1008 515,-1002 521,-996 527,-996 527,-996 647,-996 647,-996 653,-996 659,-1002 659,-1008 659,-1008 659,-1020 659,-1020 659,-1026 653,-1032 647,-1032" />
+<text text-anchor="middle" x="587" y="-1011.2" font-family="sans-serif" font-size="11.00" fill="#243746">obtain imgt reference</text>
+</a>
+</g>
+</g>
+
+<g id="edge59" class="edge">
+<title>10-&gt;9</title>
+<path fill="none" stroke="#8e9eac" d="M489.2623,-1062.8688C506.542,-1054.229 527.3042,-1043.8479 545.2401,-1034.8799" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="546.2813,-1036.7073 550.7087,-1032.1457 544.4029,-1032.9507 546.2813,-1036.7073" />
+</g>
+
+<g id="edge62" class="edge">
+<title>9-&gt;41</title>
+<path fill="none" stroke="#8e9eac" d="M568.3432,-995.6412C559.571,-986.8346 549.0705,-976.0381 540,-966 500.6839,-922.4899 457.4237,-869.2879 433.5031,-839.361" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="434.934,-837.7874 429.5503,-834.4072 431.6511,-840.407 434.934,-837.7874" />
+</g>
+
+<g id="node45" class="node" data-stage="assembly">
+<title>run_trust4</title>
+<g id="a_node45"><a xlink:title="run_trust4">
+<path fill="#e0f2fe" stroke="#9aabb8" d="M614,-966C614,-966 560,-966 560,-966 554,-966 548,-960 548,-954 548,-954 548,-942 548,-942 548,-936 554,-930 560,-930 560,-930 614,-930 614,-930 620,-930 626,-936 626,-942 626,-942 626,-954 626,-954 626,-960 620,-966 614,-966" />
+<text text-anchor="middle" x="587" y="-945.2" font-family="sans-serif" font-size="11.00" fill="#243746">run trust4</text>
+</a>
+</g>
+</g>
+
+<g id="edge63" class="edge">
+<title>9-&gt;7</title>
+<path fill="none" stroke="#8e9eac" d="M587,-995.9652C587,-988.6897 587,-980.1829 587,-972.3701" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="589.1001,-972.013 587,-966.013 584.9001,-972.013 589.1001,-972.013" />
+</g>
+
+<g id="node44" class="node" data-stage="support">
+<title>obtain_assembly_image</title>
+<g id="a_node44"><a xlink:title="obtain_assembly_image">
+<path fill="#eef1f5" stroke="#9aabb8" d="M486.5,-1032C486.5,-1032 357.5,-1032 357.5,-1032 351.5,-1032 345.5,-1026 345.5,-1020 345.5,-1020 345.5,-1008 345.5,-1008 345.5,-1002 351.5,-996 357.5,-996 357.5,-996 486.5,-996 486.5,-996 492.5,-996 498.5,-1002 498.5,-1008 498.5,-1008 498.5,-1020 498.5,-1020 498.5,-1026 492.5,-1032 486.5,-1032" />
+<text text-anchor="middle" x="422" y="-1011.2" font-family="sans-serif" font-size="11.00" fill="#243746">obtain assembly image</text>
+</a>
+</g>
+</g>
+
+<g id="edge60" class="edge">
+<title>8-&gt;40</title>
+<path fill="none" stroke="#8e9eac" d="M394.4013,-995.9652C381.8201,-987.7439 366.833,-977.9503 353.6913,-969.3626" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="354.7368,-967.5372 348.5653,-966.013 352.4393,-971.0531 354.7368,-967.5372" />
+</g>
+
+<g id="edge61" class="edge">
+<title>8-&gt;7</title>
+<path fill="none" stroke="#8e9eac" d="M467.087,-995.9652C490.397,-986.6412 518.7626,-975.2949 542.0525,-965.979" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="543.0672,-967.835 547.8581,-963.6568 541.5073,-963.9354 543.0672,-967.835" />
+</g>
+
+<g id="edge75" class="edge">
+<title>7-&gt;39</title>
+<path fill="none" stroke="#8e9eac" d="M572.9366,-929.6082C566.3669,-920.7944 558.5651,-910.0013 552,-900 523.1381,-856.0317 526.1956,-837.961 492,-798 460.3496,-761.0133 415.6669,-726.7776 385.582,-705.671" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="386.6367,-703.8465 380.5126,-702.1417 384.2369,-707.2934 386.6367,-703.8465" />
+</g>
+
+<g id="edge77" class="edge">
+<title>7-&gt;4</title>
+<path fill="none" stroke="#8e9eac" d="M626.3214,-941.7314C692.9118,-931.1155 829.2572,-909.3793 917.8114,-895.2619" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="918.2439,-897.3196 923.8385,-894.3011 917.5826,-893.172 918.2439,-897.3196" />
+</g>
+
+<g id="node46" class="node" data-stage="annotation">
+<title>reannotate_igblast</title>
+<g id="a_node46"><a xlink:title="reannotate_igblast">
+<path fill="#fef3c7" stroke="#9aabb8" d="M672.5,-900C672.5,-900 571.5,-900 571.5,-900 565.5,-900 559.5,-894 559.5,-888 559.5,-888 559.5,-876 559.5,-876 559.5,-870 565.5,-864 571.5,-864 571.5,-864 672.5,-864 672.5,-864 678.5,-864 684.5,-870 684.5,-876 684.5,-876 684.5,-888 684.5,-888 684.5,-894 678.5,-900 672.5,-900" />
+<text text-anchor="middle" x="622" y="-879.2" font-family="sans-serif" font-size="11.00" fill="#243746">reannotate igblast</text>
+</a>
+</g>
+</g>
+
+<g id="edge76" class="edge">
+<title>7-&gt;15</title>
+<path fill="none" stroke="#8e9eac" d="M596.5639,-929.9652C600.5765,-922.3986 605.2953,-913.5004 609.5718,-905.4361" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="611.4919,-906.2976 612.4477,-900.013 607.7813,-904.3299 611.4919,-906.2976" />
+</g>
+
+<g id="edge72" class="edge">
+<title>15-&gt;14</title>
+<path fill="none" stroke="#8e9eac" d="M629.1046,-863.9652C632.0281,-856.5442 635.4561,-847.8421 638.584,-839.9022" />
+<polygon fill="#8e9eac" stroke="#8e9eac" points="640.6586,-840.3652 640.904,-834.013 636.7509,-838.8257 640.6586,-840.3652" />
+</g>
+
+<g id="node47" class="node" data-stage="release">
+<title>write_scope_intermediate_readme</title>
+<g id="a_node47"><a xlink:title="write_scope_intermediate_readme">
+<path fill="#dcfce7" stroke="#9aabb8" d="M692,-1100C692,-1100 554,-1100 554,-1100 548,-1100 542,-1094 542,-1088 542,-1088 542,-1074 542,-1074 542,-1068 548,-1062 554,-1062 554,-1062 692,-1062 692,-1062 698,-1062 704,-1068 704,-1074 704,-1074 704,-1088 704,-1088 704,-1094 698,-1100 692,-1100" />
+<text text-anchor="middle" x="623" y="-1084.2" font-family="sans-serif" font-size="11.00" fill="#243746">write scope intermediate</text>
+<text text-anchor="middle" x="623" y="-1072.2" font-family="sans-serif" font-size="11.00" fill="#243746">readme</text>
+</a>
+</g>
+</g>
+</g>
+</svg>

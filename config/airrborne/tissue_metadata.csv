@@ -1,0 +1,5 @@
+tissue_id,donor_id,timepoint,timepoint_order,response
+tissue_1,donor_1,baseline,1,stable
+tissue_2,donor_1,follow_up,2,stable
+tissue_3,donor_2,baseline,1,progressed
+tissue_4,donor_2,follow_up,2,progressed

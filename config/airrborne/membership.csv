@@ -1,0 +1,7 @@
+project,library_id,usage
+project_a,library_a,analysed
+project_a,library_b,analysed
+project_a,library_c,analysed
+project_b,library_c,analysed
+project_b,library_d,analysed
+project_b,library_e,fail_qc

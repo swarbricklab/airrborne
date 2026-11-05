@@ -1,0 +1,9 @@
+project,library_id,usage,role
+project_a,SYN_D1_T1,analysed,constructed
+project_a,SYN_D1_T2,analysed,constructed
+project_a,SYN_D2_T1,analysed,constructed
+project_a,SYN_D2_T2,analysed,constructed
+project_b,SYN_D1_T1,fail_qc,constructed
+project_b,SYN_D1_T2,analysed,constructed
+project_b,SYN_D2_T1,analysed,constructed
+project_b,SYN_D2_T2,analysed,constructed

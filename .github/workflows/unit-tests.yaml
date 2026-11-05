@@ -1,0 +1,165 @@
+name: public tests
+
+# Pull requests to main run the shared checks. Manual dispatch also requires
+# FASTQ acceptance, including for release commits.
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Only fastq depends on this path decision. The other checks always run.
+  changes:
+    runs-on: ubuntu-24.04
+    outputs:
+      fastq: ${{ steps.paths.outputs.fastq }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: paths
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          if [[ "$EVENT_NAME" == workflow_dispatch ]]; then
+            run_fastq=true
+          else
+            git diff --name-only "$BASE_SHA" "$HEAD_SHA" > "$RUNNER_TEMP/changed-paths"
+            run_fastq=$(bash .github/scripts/fastq_required.sh < "$RUNNER_TEMP/changed-paths")
+          fi
+          echo "fastq=$run_fastq" >> "$GITHUB_OUTPUT"
+
+  # Run the scientific component tests once, using the pinned analysis image.
+  contracts:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: check conditional FASTQ selection
+        run: python3 .github/scripts/test_fastq_required.py
+      - uses: conda-incubator/setup-miniconda@v4
+        with:
+          miniforge-version: latest
+          environment-file: envs/snakemake_9.27.1.yaml
+          activate-environment: snakemake_9.27.1
+      - uses: eWaterCycle/setup-apptainer@v2
+        with:
+          apptainer-version: 1.3.6
+      - name: make room for the analysis image
+        run: sudo rm -rf /usr/local/lib/android
+      - name: prepare pinned scientific tests
+        env:
+          APPTAINER_DISABLE_CACHE: 'true'
+        run: ./setup.sh --config test/system/config.yaml --tests --no-browsers
+      - name: run unit and integration tests
+        run: |
+          source .snakemake/env.sh
+          python test/run_tests.py
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: component-test-evidence
+          path: .snakemake/test-tmp
+          include-hidden-files: true
+
+  # Check native-output acceptance, empty libraries and a copied offline report.
+  post-trust4:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v4
+      - name: make room for the analysis image
+        run: |
+          # The unused Android SDK occupies space needed to unpack Immcantation.
+          sudo rm -rf /usr/local/lib/android
+          df -h / /tmp
+      - uses: conda-incubator/setup-miniconda@v4
+        with:
+          miniforge-version: latest
+          environment-file: envs/snakemake_9.27.1.yaml
+          activate-environment: snakemake_9.27.1
+      - uses: eWaterCycle/setup-apptainer@v2
+        with:
+          apptainer-version: 1.3.6
+      - name: prepare public images and test environment
+        env:
+          APPTAINER_DISABLE_CACHE: 'true'
+        run: |
+          ./setup.sh --config test/system/config.yaml --tests
+          source .snakemake/env.sh
+          python -m playwright install-deps chromium
+      - name: run public downstream acceptance and copied offline report
+        run: |
+          source .snakemake/env.sh
+          ./test/system/run.sh post-trust4 --work-dir .snakemake/ci-post --check-report -- -- --cores 2 --resources mem_mb=6000
+      - name: execute empty libraries and configured minima through publication
+        run: |
+          source .snakemake/env.sh
+          ./test/system/run.sh post-trust4 --case empty --work-dir .snakemake/ci-empty -- -- --cores 2 --resources mem_mb=6000
+      - name: execute renumbered TRUST4 variants through publication
+        run: |
+          source .snakemake/env.sh
+          ./test/system/run.sh post-trust4 --case permuted --work-dir .snakemake/ci-permuted -- -- --cores 2 --resources mem_mb=6000
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: downstream-test-evidence
+          path: |
+            .snakemake/ci-post
+            .snakemake/ci-empty
+            .snakemake/ci-permuted
+          include-hidden-files: true
+
+  # Start from paired reads in a separate tree so assembly cannot reuse the
+  # post-TRUST4 seeds. Component tests already ran in the contracts job.
+  fastq:
+    needs: changes
+    if: needs.changes.outputs.fastq == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v4
+      - name: make room for the analysis image
+        run: |
+          # The unused Android SDK occupies space needed to unpack Immcantation.
+          sudo rm -rf /usr/local/lib/android
+          df -h / /tmp
+      - uses: conda-incubator/setup-miniconda@v4
+        with:
+          miniforge-version: latest
+          environment-file: envs/snakemake_9.27.1.yaml
+          activate-environment: snakemake_9.27.1
+      - uses: eWaterCycle/setup-apptainer@v2
+        with:
+          apptainer-version: 1.3.6
+      - name: prepare public images and test environment
+        env:
+          APPTAINER_DISABLE_CACHE: 'true'
+        run: |
+          ./setup.sh --config test/system/config.yaml --tests --no-browsers
+      - name: assemble synthetic reads and validate the release
+        run: |
+          source .snakemake/env.sh
+          ./test/system/run.sh fastq --work-dir .snakemake/ci-full -- -- --cores 2 --resources mem_mb=6000
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: fastq-test-evidence
+          path: .snakemake/ci-full
+          include-hidden-files: true

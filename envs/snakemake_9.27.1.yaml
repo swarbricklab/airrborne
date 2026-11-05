@@ -1,0 +1,14 @@
+# Run the workflow scheduler and validate its inputs with Snakemake 9.27.1.
+# setup.sh creates this environment; run_module.sh uses it when needed.
+# Analysis tools run in pinned images, and release rules use envs/release.yaml.
+name: snakemake_9.27.1
+
+channels:
+    - conda-forge
+    - bioconda
+
+dependencies:
+    - snakemake-minimal=9.27.1
+    - python=3.11.15
+    - pandas=3.0.2
+    - snakemake-executor-plugin-cluster-generic=1.0.9

@@ -1,0 +1,22 @@
+library_id	sequence_id	locus	consensus_count	v_gene	j_gene	qc_failures	qualified_c_gene	representative	clone_partition	transcript_junction
+SYN_D1_T1	assemble0_0	IGH	812	IGHV2-5	IGHJ1		IGHM	assemble0_0	root	IGH_root
+SYN_D1_T1	assemble1_0	IGH	480	IGHV2-26	IGHJ1		IGHG1	assemble1_0	other	IGH_other
+SYN_D1_T1	assemble2_0	IGH	580	IGHV2-5	IGHJ1		IGHG1	assemble2_0	root	IGH_early
+SYN_D1_T1	assemble3_0	TRB	232	TRBV10-1	TRBJ1-1			assemble3_0		TRB_1
+SYN_D1_T1	assemble4_0	TRB	116	TRBV10-2	TRBJ1-2			assemble4_0		TRB_2
+SYN_D1_T2	assemble0_0	IGH	714	IGHV2-5	IGHJ1		IGHG1	assemble0_0	root	IGH_early
+SYN_D1_T2	assemble0_1	IGH	131	IGHV2-5	IGHJ1		IGHG1	assemble0_0	root	IGH_late
+SYN_D1_T2	assemble1_0	IGH	446	IGHV2-26	IGHJ1		IGHG1	assemble1_0	distinct	IGH_distinct
+SYN_D1_T2	assemble2_0	IGH	410	IGHV2-5	IGHJ1		IGHA1	assemble2_0	root	IGH_late
+SYN_D1_T2	assemble3_0	TRB	237	TRBV10-1	TRBJ1-1			assemble3_0		TRB_3
+SYN_D1_T2	assemble3_1	TRB	60	TRBV10-1	TRBJ1-1			assemble3_1		TRB_1
+SYN_D1_T2	assemble4_0	IGH	60	IGHV2-26	IGHJ2			assemble4_0	short	IGH_short_c
+SYN_D2_T1	assemble0_0	IGH	928	IGHV2-5	IGHJ1		IGHM	assemble0_0	root	IGH_root
+SYN_D2_T1	assemble1_0	IGH	720	IGHV2-26	IGHJ1		IGHG1	assemble1_0	other	IGH_other_late
+SYN_D2_T1	assemble2_0	TRB	290	TRBV10-2	TRBJ1-2			assemble2_0		TRB_2
+SYN_D2_T1	assemble3_0	TRB	174	TRBV10-1	TRBJ1-1			assemble3_0		TRB_1
+SYN_D2_T2	assemble0_0	IGH	840	IGHV2-26	IGHJ1		IGHG1	assemble0_0	other	IGH_other
+SYN_D2_T2	assemble1_0	IGH	696	IGHV2-26	IGHJ1		IGHG1	assemble1_0	distinct	IGH_distinct
+SYN_D2_T2	assemble2_0	TRB	232	TRBV10-2	TRBJ1-2			assemble2_0		TRB_2
+SYN_D2_T2	assemble3_0	IGH	174	IGHV2-5	IGHJ1	productive				IGH_stop
+SYN_D2_T2	assemble4_0	TRB	116	TRBV10-1	TRBJ1-1			assemble4_0		TRB_3

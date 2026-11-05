@@ -1,0 +1,221 @@
+# Validate run settings before the DAG is built. config/airrborne/config.yaml explains
+# the scientific defaults and decision modules; this file owns accepted values.
+# airr-2.0.0.yaml is the unchanged upstream schema for released AIRR data.
+$schema: "https://json-schema.org/draft/2020-12/schema"
+description: >-
+  The Snakefile validates run settings with snakemake.utils.validate before
+  building the DAG. Unknown keys stop the run. Validation inserts the declared
+  defaults for analysis_only, scope_metadata and params.overlap.min_consensus_count;
+  other required settings must be supplied. The image_sif_path() call in
+  workflow/rules/common.smk separately requires digest-pinned image references.
+
+  Three values reach TRUST4's run-trust4 launcher as paths (deps.resources and
+  refs.imgt_reference_name as -f/--ref, outs.results_dir as --od). That launcher
+  builds a further shell command internally, so those three carry a pattern
+  restricting them to characters that survive an unquoted expansion. The same
+  restriction is applied separately to the FASTQ files discovered on disk, in
+  find_all_fastq_files(); a schema cannot see those.
+type: object
+additionalProperties: false
+properties:
+  analysis_only:
+    description: Reuse retained assembly and depth products without resolving FASTQs.
+    type: boolean
+    default: false
+  scope:
+    description: Build one declared scope; omission builds every scope.
+    type: string
+    minLength: 1
+  deps:
+    type: object
+    additionalProperties: false
+    properties:
+      samplesheet: {type: string, minLength: 1}
+      data: {type: string, minLength: 1}
+      resources: {type: string, minLength: 1, pattern: "^[A-Za-z0-9_./:+-]+$"}
+      immcantation_docker: {type: string, minLength: 1}
+      trust4_container: {type: string, minLength: 1}
+    required:
+      - samplesheet
+      - data
+      - resources
+      - immcantation_docker
+      - trust4_container
+  scope_metadata:
+    # Report annotations belong to declared scopes, checked by the Snakefile.
+    # Omit the cohort entry to report its scientific outputs without attaching
+    # project metadata.
+    type: object
+    default: {}
+    additionalProperties:
+      type: object
+      additionalProperties: false
+      properties:
+        tissue: {$ref: "#/$defs/metadata_source"}
+        library: {$ref: "#/$defs/metadata_source"}
+  membership_csv:
+    # The Snakefile validates this CSV and defines scopes from its project values.
+    # Each row assigns one library to one project with usage analysed or fail_qc.
+    # fail_qc excludes the library from that project. The cohort scope still holds
+    # every samplesheet library. Omission or an empty string gives cohort only.
+    type: string
+  refs:
+    type: object
+    additionalProperties: false
+    properties:
+      imgt_reference_name:
+        # A bare file name written into deps.resources, so no directory part.
+        type: string
+        minLength: 1
+        pattern: "^[A-Za-z0-9_.+-]+$"
+    required: [imgt_reference_name]
+  outs:
+    type: object
+    additionalProperties: false
+    properties:
+      results_dir: {type: string, minLength: 1, pattern: "^[A-Za-z0-9_./:+-]+$"}
+      log_dir: {type: string, minLength: 1}
+    required: [results_dir, log_dir]
+  params:
+    type: object
+    additionalProperties: false
+    properties:
+      rarefaction:
+        type: object
+        additionalProperties: false
+        properties:
+          targets:
+            type: object
+            propertyNames: {enum: [IGH, IGK, IGL, TRA, TRB, TRD, TRG]}
+            additionalProperties: {type: integer, minimum: 1}
+        required: [targets]
+      diversity:
+        type: object
+        additionalProperties: false
+        properties:
+          min_consensus_count:
+            type: object
+            propertyNames: {enum: [IGH, IGK, IGL, TRA, TRB, TRD, TRG]}
+            additionalProperties: {type: integer, minimum: 0}
+        required: [min_consensus_count]
+      trust4:
+        type: object
+        additionalProperties: false
+        properties:
+          k_mer_size: {type: integer, minimum: 1}
+          contig_min_cov: {type: integer, minimum: 0}
+        required: [k_mer_size, contig_min_cov]
+      lineage:
+        type: object
+        additionalProperties: false
+        properties:
+          clonal_threshold:
+            oneOf:
+              - {const: auto}
+              - {type: number, minimum: 0, maximum: 1}
+          min_fit_distances: {type: integer, minimum: 2}
+          fit_edge: {type: number, exclusiveMinimum: 0, exclusiveMaximum: 1}
+          fit_specificity: {type: number, minimum: 0, maximum: 1}
+          fit_subsample:
+            oneOf:
+              - {type: integer, minimum: 2}
+              - {type: "null"}
+          # IGH preparation, donor fitting and SCOPer assignment share this
+          # junction allowance. It does not relax common record QC.
+          max_n: {type: integer, minimum: 0}
+        required:
+          - clonal_threshold
+          - min_fit_distances
+          - fit_edge
+          - fit_specificity
+          - fit_subsample
+          - max_n
+      igblast:
+        type: object
+        additionalProperties: false
+        properties:
+          igblast_db: {type: string, minLength: 1}
+          germline_dir: {type: string, minLength: 1}
+          num_alignments_v: {type: integer, minimum: 1}
+          num_alignments_j: {type: integer, minimum: 1}
+          num_alignments_d: {type: integer, minimum: 1}
+          num_alignments_c: {type: integer, minimum: 1}
+        required:
+          - igblast_db
+          - germline_dir
+          - num_alignments_v
+          - num_alignments_j
+          - num_alignments_d
+          - num_alignments_c
+      airr_qc:
+        type: object
+        additionalProperties: false
+        properties:
+          max_alignment_n_fraction: {type: number, minimum: 0, maximum: 1}
+          min_informative_c_alignment_positions: {type: integer, minimum: 0}
+        required:
+          - max_alignment_n_fraction
+          - min_informative_c_alignment_positions
+      shm:
+        type: object
+        additionalProperties: false
+        properties:
+          min_position_votes: {type: integer, minimum: 0}
+          min_supported_subregion_fraction: {type: number, minimum: 0, maximum: 1}
+          min_germline_occupied_v_positions: {type: integer, minimum: 0, maximum: 312}
+        required:
+          - min_position_votes
+          - min_supported_subregion_fraction
+          - min_germline_occupied_v_positions
+      selection:
+        type: object
+        additionalProperties: false
+        properties:
+          collapse_min_freq: {type: number, exclusiveMinimum: 0, maximum: 1}
+        required:
+          - collapse_min_freq
+      overlap:
+        type: object
+        additionalProperties: false
+        properties:
+          min_consensus_count:
+            type: object
+            default: {IGH: 0, TRA: 0, TRB: 0, TRD: 0, TRG: 0}
+            propertyNames: {enum: [IGH, TRA, TRB, TRD, TRG]}
+            additionalProperties: {type: integer, minimum: 0}
+          loci:
+            type: array
+            items: {enum: [IGH, TRA, TRB, TRD, TRG]}
+            minItems: 1
+            uniqueItems: true
+        required:
+          - loci
+    required:
+      - rarefaction
+      - diversity
+      - trust4
+      - lineage
+      - igblast
+      - airr_qc
+      - shm
+      - selection
+      - overlap
+required:
+  - deps
+  - refs
+  - outs
+  - params
+
+$defs:
+  metadata_source:
+    type: object
+    additionalProperties: false
+    properties:
+      file: {type: string, minLength: 1}
+      # Omit columns to include every non-identifier field in this source.
+      columns:
+        type: array
+        minItems: 1
+        uniqueItems: true
+        items: {type: string, minLength: 1, pattern: "\\S"}
+    required: [file]
